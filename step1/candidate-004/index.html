@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Token Casino</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="casino-wrapper">
+    <header>
+      <h1>🤖 AI TOKEN CASINO 🎰</h1>
+      <p class="subtitle">Where your tokens go to die (just like your context window)</p>
+    </header>
+
+    <div class="token-display">
+      <div class="token-box">
+        <span class="token-label">YOUR TOKENS</span>
+        <span class="token-count" id="tokenCount">1000</span>
+      </div>
+      <div class="token-box bet-box">
+        <span class="token-label">BET</span>
+        <div class="bet-controls">
+          <button class="bet-btn" id="betDown">−</button>
+          <span class="token-count" id="betAmount">10</span>
+          <button class="bet-btn" id="betUp">+</button>
+        </div>
+      </div>
+      <div class="token-box">
+        <span class="token-label">LAST WIN</span>
+        <span class="token-count win-display" id="lastWin">0</span>
+      </div>
+    </div>
+
+    <div class="machine">
+      <div class="machine-top">
+        <div class="machine-lights">
+          <span class="light"></span><span class="light"></span><span class="light"></span>
+          <span class="light"></span><span class="light"></span>
+        </div>
+      </div>
+
+      <div class="reels-container">
+        <div class="reel-window">
+          <div class="reel" id="reel0">
+            <div class="reel-track" id="track0"></div>
+          </div>
+        </div>
+        <div class="reel-window">
+          <div class="reel" id="reel1">
+            <div class="reel-track" id="track1"></div>
+          </div>
+        </div>
+        <div class="reel-window">
+          <div class="reel" id="reel2">
+            <div class="reel-track" id="track2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="payline"></div>
+
+      <div class="controls">
+        <button class="spin-btn" id="spinBtn">
+          <span class="spin-text">SPIN</span>
+          <span class="spin-cost" id="spinCost">(-10 tokens)</span>
+        </button>
+        <button class="max-bet-btn" id="maxBet">MAX BET</button>
+      </div>
+    </div>
+
+    <div class="message-box" id="messageBox">
+      <p id="messageText">Insert tokens to begin hallucinating wins...</p>
+    </div>
+
+    <div class="paytable">
+      <h3>PAYTABLE (in tokens, obviously)</h3>
+      <div class="pay-grid">
+        <div class="pay-row jackpot">🧠🧠🧠 <span>AGI JACKPOT</span> <span class="pay-mult">×100</span></div>
+        <div class="pay-row">⚡⚡⚡ <span>GPU CLUSTER</span> <span class="pay-mult">×50</span></div>
+        <div class="pay-row">💰💰💰 <span>VC FUNDING</span> <span class="pay-mult">×25</span></div>
+        <div class="pay-row">🔥🔥🔥 <span>MODEL LAUNCH</span> <span class="pay-mult">×20</span></div>
+        <div class="pay-row">📜📜📜 <span>TRAINING DATA</span> <span class="pay-mult">×15</span></div>
+        <div class="pay-row">🤖🤖🤖 <span>ROBOT ARMY</span> <span class="pay-mult">×12</span></div>
+        <div class="pay-row">😵😵😵 <span>HALLUCINATION</span> <span class="pay-mult">×8</span></div>
+        <div class="pay-row">🐛🐛🐛 <span>BUG IN PROD</span> <span class="pay-mult">×5</span></div>
+        <div class="pay-row dim">Any 2 match <span>ALMOST!</span> <span class="pay-mult">×0</span></div>
+        <div class="pay-row dim">No match <span>DEPRECATED</span> <span class="pay-mult">×0</span></div>
+      </div>
+    </div>
+
+    <div class="fine-print">
+      <p>⚠️ The house always wins. Just like LLMs on benchmarks they were trained on.</p>
+      <p>Tokens have no monetary value. Neither do most AI startups.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
