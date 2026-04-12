@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 655
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Visual artifact pinned to top of screen.
+- **Code Quality Notes:** Unremarkable.

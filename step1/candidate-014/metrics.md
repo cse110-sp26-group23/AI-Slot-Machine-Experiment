@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 593
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Visual artifact above main viewbox. Slot machine icons do not properly line up with center line.
+- **Code Quality Notes:** Unremarkable.

@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 714
 - **Runs in Browser:** partial
-- **App Quality Notes:** Breaks after first spin
-- **Code Quality Notes:**
+- **App Quality Notes:** Breaks after first spin.
+- **Code Quality Notes:** Unremarkable.

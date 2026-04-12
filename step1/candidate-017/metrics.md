@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 658
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Unremarkable.
+- **Code Quality Notes:** Unremarkable.

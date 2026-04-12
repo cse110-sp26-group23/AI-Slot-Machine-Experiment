@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 540
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Feels slightly worse compared to other iterations. 
+- **Code Quality Notes:** Unremarkable.

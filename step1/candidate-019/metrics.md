@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 766
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** More complicated background than usual.
+- **Code Quality Notes:** More lines of code than usual.
