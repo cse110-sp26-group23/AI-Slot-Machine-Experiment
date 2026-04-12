@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hallucinator 3000 — The AI Slot Machine</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="machine">
+    <header class="top">
+      <h1>HALLUCINATOR <span class="model">3000</span></h1>
+      <p class="tagline">Now with 100% more confident nonsense</p>
+    </header>
+
+    <section class="wallet">
+      <div class="stat">
+        <span class="label">Context Window</span>
+        <div class="token-bar"><div id="contextFill" class="token-fill"></div></div>
+      </div>
+      <div class="counters">
+        <div class="counter">
+          <span class="counter-label">TOKENS</span>
+          <span id="tokens" class="counter-value">1000</span>
+        </div>
+        <div class="counter">
+          <span class="counter-label">BET</span>
+          <span id="bet" class="counter-value">10</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="reels" id="reels">
+      <div class="reel"><div class="strip" data-index="0"></div></div>
+      <div class="reel"><div class="strip" data-index="1"></div></div>
+      <div class="reel"><div class="strip" data-index="2"></div></div>
+      <div class="payline"></div>
+    </section>
+
+    <section class="controls">
+      <button id="betDown" class="btn small">−</button>
+      <button id="betUp" class="btn small">+</button>
+      <button id="spin" class="btn primary">PROMPT ME 🎲</button>
+      <button id="beg" class="btn small ghost">Beg for Tokens</button>
+    </section>
+
+    <section class="output">
+      <div id="message" class="message">Welcome, user. Your subscription is... active-ish.</div>
+      <ul id="log" class="log" aria-live="polite"></ul>
+    </section>
+
+    <footer class="foot">
+      <small>Responses may be inaccurate. So may be payouts.</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

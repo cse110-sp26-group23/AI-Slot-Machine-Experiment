@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hallucin-o-Matic 3000 — AI Slot Machine</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="machine">
+    <header class="top">
+      <h1>HALLUCIN-O-MATIC <span class="ver">v3000</span></h1>
+      <p class="tagline">Burn tokens. Manifest nonsense. Feel the AGI.</p>
+    </header>
+
+    <div class="hud">
+      <div class="stat">
+        <span class="label">Token Balance</span>
+        <span id="balance" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Bet / Spin</span>
+        <div class="bet-controls">
+          <button id="betDown" aria-label="Decrease bet">−</button>
+          <span id="bet" class="value">10</span>
+          <button id="betUp" aria-label="Increase bet">+</button>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="label">Last Payout</span>
+        <span id="payout" class="value">0</span>
+      </div>
+    </div>
+
+    <div class="reels" id="reels">
+      <div class="reel"><div class="strip" data-reel="0"></div></div>
+      <div class="reel"><div class="strip" data-reel="1"></div></div>
+      <div class="reel"><div class="strip" data-reel="2"></div></div>
+      <div class="payline"></div>
+    </div>
+
+    <div class="controls">
+      <button id="spin" class="spin-btn">SPIN</button>
+      <button id="maxBet" class="alt-btn">MAX BET</button>
+      <button id="reset" class="alt-btn">Beg VC for More</button>
+    </div>
+
+    <div class="message" id="message">Insert tokens. Pray to the stochastic parrot.</div>
+
+    <section class="paytable">
+      <h2>Payout Table (per token bet)</h2>
+      <ul>
+        <li><span>🧠 🧠 🧠</span> AGI Achieved — <b>×100</b></li>
+        <li><span>🤖 🤖 🤖</span> Model Collapse — <b>×50</b></li>
+        <li><span>📎 📎 📎</span> Clippy Returns — <b>×25</b></li>
+        <li><span>🔥 🔥 🔥</span> GPU Meltdown — <b>×15</b></li>
+        <li><span>💸 💸 💸</span> Series Z Funding — <b>×10</b></li>
+        <li><span>🌀 🌀 🌀</span> Hallucination Combo — <b>×5</b></li>
+        <li><span>any two matching</span> — <b>×2</b></li>
+      </ul>
+    </section>
+
+    <footer class="foot">No refunds. No alignment. No guarantees. Responses may contain traces of confidence.</footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

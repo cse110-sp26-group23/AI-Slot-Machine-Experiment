@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hallucination Jackpot — The AI Token Slot Machine</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="marquee">
+      <h1>HALLUCINATION JACKPOT</h1>
+      <p class="tagline">Burn tokens. Pray for emergent behavior.</p>
+    </header>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="label">Token Balance</span>
+        <span class="value" id="balance">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Context Window</span>
+        <div class="context-bar"><div id="contextFill"></div></div>
+      </div>
+      <div class="stat">
+        <span class="label">Bet / Spin</span>
+        <span class="value"><span id="bet">50</span></span>
+      </div>
+    </section>
+
+    <section class="reels" id="reels">
+      <div class="reel"><div class="strip" data-reel="0"></div></div>
+      <div class="reel"><div class="strip" data-reel="1"></div></div>
+      <div class="reel"><div class="strip" data-reel="2"></div></div>
+    </section>
+
+    <section class="controls">
+      <button id="betDown" class="btn small">−</button>
+      <button id="spinBtn" class="btn primary">SPIN ($$$)</button>
+      <button id="betUp" class="btn small">+</button>
+      <button id="maxBet" class="btn small">MAX</button>
+    </section>
+
+    <section class="console">
+      <div class="console-header">
+        <span class="blink">●</span> AI Inference Log
+      </div>
+      <ul id="log"></ul>
+    </section>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
