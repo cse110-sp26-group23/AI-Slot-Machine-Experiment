@@ -8,7 +8,7 @@
 - **Total Tokens:** 10249
 - **Elapsed Time (s):** 1:50
 - **Files Produced:** 3
-- **Lines of Code:**
+- **Lines of Code:** 714
 - **Runs in Browser:** partial
 - **App Quality Notes:** Breaks after first spin
 - **Code Quality Notes:**

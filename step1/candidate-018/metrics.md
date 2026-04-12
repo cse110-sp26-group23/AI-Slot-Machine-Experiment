@@ -8,7 +8,7 @@
 - **Total Tokens:** 8568
 - **Elapsed Time (s):** 1:34
 - **Files Produced:** 3
-- **Lines of Code:**
+- **Lines of Code:** 567
 - **Runs in Browser:** yes
 - **App Quality Notes:**
 - **Code Quality Notes:**
