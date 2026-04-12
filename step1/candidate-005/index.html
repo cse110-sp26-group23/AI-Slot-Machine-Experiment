@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TokenSlot — AI Casino</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <header>
+    <h1>🤖 TOKEN<span>SLOT</span></h1>
+    <p class="tagline">The only casino where the house model always wins</p>
+  </header>
+
+  <main>
+    <div class="hud">
+      <div class="hud-item">
+        <span class="hud-label">INPUT TOKENS</span>
+        <span class="hud-value" id="balance">500</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">OUTPUT TOKENS</span>
+        <span class="hud-value" id="winnings">0</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">CONTEXT WINDOW</span>
+        <span class="hud-value" id="spins">0</span>
+      </div>
+    </div>
+
+    <div class="machine">
+      <div class="machine-top">
+        <div class="light-row" id="lights"></div>
+      </div>
+
+      <div class="reels-container">
+        <div class="reel-wrapper">
+          <div class="reel" id="reel0">
+            <div class="reel-inner" id="reel-inner0"></div>
+          </div>
+        </div>
+        <div class="reel-wrapper">
+          <div class="reel" id="reel1">
+            <div class="reel-inner" id="reel-inner1"></div>
+          </div>
+        </div>
+        <div class="reel-wrapper">
+          <div class="reel" id="reel2">
+            <div class="reel-inner" id="reel-inner2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="win-line" id="win-line"></div>
+
+      <div class="controls">
+        <div class="bet-control">
+          <button class="btn-small" id="bet-down">−</button>
+          <span>BET: <strong id="bet-display">10</strong> tokens</span>
+          <button class="btn-small" id="bet-up">+</button>
+        </div>
+        <button class="spin-btn" id="spin-btn">
+          <span>SPIN</span>
+          <small>Costs tokens to think</small>
+        </button>
+        <button class="btn-small" id="max-bet-btn">MAX BET</button>
+      </div>
+    </div>
+
+    <div class="message-box" id="message-box">
+      <p id="message-text">Insert tokens to begin hallucinating profits...</p>
+    </div>
+
+    <div class="paytable">
+      <h2>PAYTABLE</h2>
+      <table>
+        <tr><th>Combo</th><th>Payout</th><th>Message</th></tr>
+        <tr><td>🧠🧠🧠</td><td>500×</td><td>AGI achieved!</td></tr>
+        <tr><td>💀💀💀</td><td>200×</td><td>Model deprecated</td></tr>
+        <tr><td>🤖🤖🤖</td><td>100×</td><td>Fully autonomous!</td></tr>
+        <tr><td>📎📎📎</td><td>75×</td><td>Paperclip singularity</td></tr>
+        <tr><td>🔥🔥🔥</td><td>50×</td><td>GPU on fire</td></tr>
+        <tr><td>💰💰💰</td><td>30×</td><td>VC funding secured</td></tr>
+        <tr><td>⚡⚡⚡</td><td>20×</td><td>Low latency!</td></tr>
+        <tr><td>🎲🎲🎲</td><td>15×</td><td>Stochastic parrot</td></tr>
+        <tr><td>Any 3 match</td><td>10×</td><td>Pattern matched</td></tr>
+        <tr><td>Any 2 match</td><td>2×</td><td>Partial attention</td></tr>
+      </table>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

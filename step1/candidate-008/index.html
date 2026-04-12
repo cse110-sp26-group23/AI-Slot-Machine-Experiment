@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TokenSlot — The AI Casino</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="casino-wrapper">
+    <header class="casino-header">
+      <div class="model-badge">Powered by GPT-∞ Turbo Ultra Pro Max</div>
+      <h1 class="casino-title">TOKEN<span>SLOT</span></h1>
+      <p class="casino-subtitle">Where your context window goes to die</p>
+    </header>
+
+    <div class="token-display">
+      <div class="token-box">
+        <span class="token-label">TOKEN BALANCE</span>
+        <span class="token-count" id="tokenCount">1,000,000</span>
+        <span class="token-unit">tokens</span>
+      </div>
+      <div class="token-box spent">
+        <span class="token-label">TOKENS BURNED</span>
+        <span class="token-count" id="tokensBurned">0</span>
+        <span class="token-unit">tokens (gone forever)</span>
+      </div>
+    </div>
+
+    <div class="machine-body">
+      <div class="machine-top">
+        <div class="lightbar" id="lightbar"></div>
+      </div>
+
+      <div class="reels-container">
+        <div class="reel-wrapper">
+          <div class="reel" id="reel0">
+            <div class="reel-inner" id="reelInner0"></div>
+          </div>
+        </div>
+        <div class="reel-divider"></div>
+        <div class="reel-wrapper">
+          <div class="reel" id="reel1">
+            <div class="reel-inner" id="reelInner1"></div>
+          </div>
+        </div>
+        <div class="reel-divider"></div>
+        <div class="reel-wrapper">
+          <div class="reel" id="reel2">
+            <div class="reel-inner" id="reelInner2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="payline-indicator">
+        <span class="payline-arrow">◀</span>
+        <span class="payline-text">PAYLINE</span>
+        <span class="payline-arrow">▶</span>
+      </div>
+
+      <div class="result-display" id="resultDisplay">
+        <span id="resultText">Pull the lever to infer!</span>
+      </div>
+
+      <div class="bet-controls">
+        <label class="bet-label">TOKENS PER SPIN</label>
+        <div class="bet-buttons">
+          <button class="bet-btn" data-bet="100">100</button>
+          <button class="bet-btn active" data-bet="500">500</button>
+          <button class="bet-btn" data-bet="1000">1K</button>
+          <button class="bet-btn" data-bet="5000">5K</button>
+          <button class="bet-btn" data-bet="10000">10K</button>
+        </div>
+      </div>
+
+      <div class="spin-area">
+        <button class="spin-btn" id="spinBtn">
+          <span class="spin-btn-text">SPIN</span>
+          <span class="spin-btn-sub">▼ Pull Lever ▼</span>
+        </button>
+        <div class="lever-container">
+          <div class="lever" id="lever">
+            <div class="lever-ball"></div>
+            <div class="lever-rod"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="payout-table">
+      <h3>PAYOUT TABLE <span class="hallucinated">(may be hallucinated)</span></h3>
+      <table>
+        <tr><td>🤖🤖🤖</td><td>JACKPOT</td><td class="payout-mult">×1000</td></tr>
+        <tr><td>🧠🧠🧠</td><td>BIG BRAIN</td><td class="payout-mult">×500</td></tr>
+        <tr><td>💀💀💀</td><td>ALIGNMENT FAIL</td><td class="payout-mult">×250</td></tr>
+        <tr><td>💬💬💬</td><td>HALLUCINATION</td><td class="payout-mult">×100</td></tr>
+        <tr><td>🔥🔥🔥</td><td>GPU ON FIRE</td><td class="payout-mult">×75</td></tr>
+        <tr><td>📉📉📉</td><td>VC RETURNS</td><td class="payout-mult">×50</td></tr>
+        <tr><td>Any 2 match</td><td>PARTIAL CREDIT</td><td class="payout-mult">×2</td></tr>
+      </table>
+    </div>
+
+    <div class="history-panel">
+      <h3>INFERENCE LOG</h3>
+      <ul id="historyList"></ul>
+    </div>
+
+    <div class="disclaimer">
+      ⚠️ This machine runs on vibes and borrowed compute. No tokens were actually harmed... or were they?
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="winModal">
+    <div class="modal-box">
+      <div class="modal-emoji" id="modalEmoji">🎉</div>
+      <div class="modal-title" id="modalTitle">YOU WIN</div>
+      <div class="modal-amount" id="modalAmount">+500 tokens</div>
+      <div class="modal-flavor" id="modalFlavor"></div>
+      <button class="modal-close" id="modalClose">ACKNOWLEDGE OUTPUT</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

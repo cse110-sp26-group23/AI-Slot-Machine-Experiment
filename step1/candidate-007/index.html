@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Token Casino — Bet Your Context Window!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="casino-wrapper">
+    <header>
+      <h1>TOKEN CASINO</h1>
+      <p class="subtitle">Where your context window goes to die 🎰</p>
+    </header>
+
+    <div class="token-bar">
+      <div class="token-display">
+        <span class="token-label">TOKENS</span>
+        <span id="token-count">100</span>
+      </div>
+      <div class="token-display">
+        <span class="token-label">SPENT THIS SESSION</span>
+        <span id="tokens-spent">0</span>
+      </div>
+      <div class="token-display">
+        <span class="token-label">WIN STREAK</span>
+        <span id="win-streak">0</span>
+      </div>
+    </div>
+
+    <div class="machine-body">
+      <div class="machine-top">
+        <div class="lights" id="lights"></div>
+      </div>
+
+      <div class="reels-container">
+        <div class="reel-wrapper" id="reel-0">
+          <div class="reel" id="reel-strip-0"></div>
+        </div>
+        <div class="reel-wrapper" id="reel-1">
+          <div class="reel" id="reel-strip-1"></div>
+        </div>
+        <div class="reel-wrapper" id="reel-2">
+          <div class="reel" id="reel-strip-2"></div>
+        </div>
+      </div>
+
+      <div class="payline"></div>
+
+      <div class="controls">
+        <div class="bet-controls">
+          <button class="bet-btn" id="bet-dec">−</button>
+          <div class="bet-display">
+            <span class="bet-label">BET</span>
+            <span id="bet-amount">10</span>
+          </div>
+          <button class="bet-btn" id="bet-inc">+</button>
+        </div>
+        <button class="spin-btn" id="spin-btn">
+          <span>SPIN</span>
+          <small>consume tokens</small>
+        </button>
+        <button class="max-btn" id="max-btn">MAX BET</button>
+      </div>
+    </div>
+
+    <div class="result-panel" id="result-panel">
+      <p id="result-message">Pull the lever to generate your fortune!</p>
+    </div>
+
+    <div class="paytable">
+      <h3>PAYTABLE</h3>
+      <div class="pay-grid">
+        <div class="pay-row jackpot">
+          <span>🤖🤖🤖</span><span>JACKPOT — 50× (AGI achieved!)</span>
+        </div>
+        <div class="pay-row">
+          <span>💰💰💰</span><span>25× (Bought GPU time)</span>
+        </div>
+        <div class="pay-row">
+          <span>📊📊📊</span><span>20× (Hallucinated earnings report)</span>
+        </div>
+        <div class="pay-row">
+          <span>🧠🧠🧠</span><span>15× (Emergent behavior!)</span>
+        </div>
+        <div class="pay-row">
+          <span>⚡⚡⚡</span><span>10× (Inference at scale)</span>
+        </div>
+        <div class="pay-row">
+          <span>🔥🔥🔥</span><span>8× (Model on fire)</span>
+        </div>
+        <div class="pay-row">
+          <span>💾💾💾</span><span>5× (Overfit to training data)</span>
+        </div>
+        <div class="pay-row">
+          <span>Any 2 match</span><span>2× (Statistically likely)</span>
+        </div>
+        <div class="pay-row lose">
+          <span>No match</span><span>−BET (Context exhausted)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-quotes">
+      <p id="ai-quote">"I'm not gambling, I'm running a stochastic optimization on reward signals."</p>
+    </div>
+  </div>
+
+  <div class="win-overlay" id="win-overlay">
+    <div class="win-content">
+      <div class="win-title" id="win-title">JACKPOT!</div>
+      <div class="win-amount" id="win-amount">+500 tokens</div>
+      <div class="win-subtitle" id="win-subtitle">AGI has been achieved... for now.</div>
+      <button onclick="document.getElementById('win-overlay').classList.remove('active')">COLLECT TOKENS</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
