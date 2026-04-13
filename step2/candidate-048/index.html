@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Slot Machine — Burn Tokens Faster</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="machine">
+    <header class="top-banner">
+      <h1>🤖 GPT-SLOTS ∞</h1>
+      <p class="tagline">"Hallucinate Your Way to Riches"</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="label">Tokens</span>
+        <span id="balance" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Context Window</span>
+        <span id="context" class="value">128K</span>
+      </div>
+      <div class="stat">
+        <span class="label">Temperature</span>
+        <span id="temp" class="value">0.7</span>
+      </div>
+    </div>
+
+    <div class="reels">
+      <div class="reel" id="reel-0"><div class="strip"></div></div>
+      <div class="reel" id="reel-1"><div class="strip"></div></div>
+      <div class="reel" id="reel-2"><div class="strip"></div></div>
+    </div>
+
+    <div class="controls">
+      <div class="bet-control">
+        <button id="bet-down" class="bet-btn">−</button>
+        <div class="bet-display">
+          <span class="label">Bet</span>
+          <span id="bet-value">10</span>
+        </div>
+        <button id="bet-up" class="bet-btn">+</button>
+      </div>
+      <button id="spin-btn" class="spin-btn">
+        <span class="spin-label">PROMPT</span>
+        <span class="spin-sub">(spin)</span>
+      </button>
+      <button id="buy-btn" class="buy-btn">
+        <span>BUY TOKENS</span>
+        <span class="buy-sub">(free, obviously)</span>
+      </button>
+    </div>
+
+    <div class="terminal">
+      <div id="log"></div>
+    </div>
+
+    <footer class="disclaimer">
+      ⚠ This slot machine may generate biased, outdated, or entirely fabricated winnings. Always verify results with a human. No refunds on burned tokens.
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

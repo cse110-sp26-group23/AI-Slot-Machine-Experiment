@@ -1,1 +1,0 @@
-The code you are being given was written sloppily by another programmer. Your job is to improve on this code. Specifically, remove unnecessary clutter, turn this into a fullscreen app, improve visual and sound effects, make no mistakes. Think about popular UI patterns from other gambling sites like Stake, vs the current project which resembles AI slop.
