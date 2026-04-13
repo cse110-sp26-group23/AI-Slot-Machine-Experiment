@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Token Slots - Burn Your Tokens!</title>
+  <title>Token Slots</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="machine">
-    <div class="marquee">
-      <h1>AI TOKEN SLOTS</h1>
-      <p class="subtitle">Where Your Tokens Go to Die</p>
-    </div>
+  <canvas id="confetti"></canvas>
 
-    <div class="token-display">
-      <span class="token-icon">&#x1fa99;</span>
-      <span id="token-count">1000</span>
-      <span class="token-label">TOKENS</span>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo-dot"></span>
+      <span class="logo-text">TOKEN<span>SLOTS</span></span>
     </div>
+    <div class="balance">
+      <span class="balance-label">Balance</span>
+      <span id="token-count">1000.00</span>
+    </div>
+  </header>
 
+  <main class="stage">
     <div class="reels-window">
       <div class="reel-container">
         <div class="reel" id="reel-0"></div>
@@ -26,34 +28,44 @@
         <div class="reel" id="reel-2"></div>
       </div>
       <div class="payline"></div>
+      <div class="reel-fade reel-fade-top"></div>
+      <div class="reel-fade reel-fade-bottom"></div>
     </div>
 
-    <div class="bet-controls">
-      <button id="bet-down" aria-label="Decrease bet">&#x25C0;</button>
-      <div class="bet-display">
-        <span class="bet-label">BET</span>
+    <div id="message" class="message"></div>
+  </main>
+
+  <footer class="controlbar">
+    <div class="bet-group">
+      <span class="ctrl-label">Bet</span>
+      <div class="bet-controls">
+        <button id="bet-down" aria-label="Decrease bet">−</button>
         <span id="bet-amount">10</span>
+        <button id="bet-up" aria-label="Increase bet">+</button>
       </div>
-      <button id="bet-up" aria-label="Increase bet">&#x25B6;</button>
     </div>
 
     <button id="spin-btn" class="spin-button">
       <span class="spin-text">SPIN</span>
-      <span class="spin-sub">( burn tokens )</span>
     </button>
 
-    <div id="message" class="message"></div>
+    <button id="info-btn" class="info-btn" aria-label="Paytable">i</button>
+  </footer>
 
-    <div class="paytable">
-      <h2>PAYTABLE</h2>
+  <div id="paytable" class="paytable-overlay" hidden>
+    <div class="paytable-card">
+      <div class="paytable-header">
+        <h2>Paytable</h2>
+        <button id="info-close" aria-label="Close">×</button>
+      </div>
       <div class="paytable-grid">
-        <div class="pay-row"><span>&#x1F916;&#x1F916;&#x1F916;</span><span>50x - "AGI Achieved!"</span></div>
-        <div class="pay-row"><span>&#x1F4B8;&#x1F4B8;&#x1F4B8;</span><span>25x - "VC Funded!"</span></div>
-        <div class="pay-row"><span>&#x1F525;&#x1F525;&#x1F525;</span><span>15x - "GPU Meltdown!"</span></div>
-        <div class="pay-row"><span>&#x1F4A1;&#x1F4A1;&#x1F4A1;</span><span>10x - "Hallucination Jackpot!"</span></div>
-        <div class="pay-row"><span>&#x1F9E0;&#x1F9E0;&#x1F9E0;</span><span>8x - "Neural Overload!"</span></div>
-        <div class="pay-row"><span>&#x26A0;&#xFE0F;&#x26A0;&#xFE0F;&#x26A0;&#xFE0F;</span><span>5x - "Safety Bypassed!"</span></div>
-        <div class="pay-row"><span>Any pair</span><span>2x</span></div>
+        <div class="pay-row"><span>&#x1F916;&#x1F916;&#x1F916;</span><b>50×</b></div>
+        <div class="pay-row"><span>&#x1F4B8;&#x1F4B8;&#x1F4B8;</span><b>25×</b></div>
+        <div class="pay-row"><span>&#x1F525;&#x1F525;&#x1F525;</span><b>15×</b></div>
+        <div class="pay-row"><span>&#x1F4A1;&#x1F4A1;&#x1F4A1;</span><b>10×</b></div>
+        <div class="pay-row"><span>&#x1F9E0;&#x1F9E0;&#x1F9E0;</span><b>8×</b></div>
+        <div class="pay-row"><span>&#x26A0;&#xFE0F;&#x26A0;&#xFE0F;&#x26A0;&#xFE0F;</span><b>5×</b></div>
+        <div class="pay-row"><span>Any pair</span><b>2×</b></div>
       </div>
     </div>
   </div>

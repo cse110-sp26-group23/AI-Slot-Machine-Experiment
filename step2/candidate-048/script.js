@@ -1,73 +1,102 @@
 const SYMBOLS = [
-  { emoji: '🤖', name: 'GPT',         payout: 5,   weight: 20 },
-  { emoji: '🧠', name: 'Neural Net',  payout: 8,   weight: 15 },
-  { emoji: '💾', name: 'Dataset',     payout: 3,   weight: 25 },
-  { emoji: '⚡', name: 'GPU',         payout: 10,  weight: 12 },
-  { emoji: '📊', name: 'Benchmark',   payout: 4,   weight: 18 },
-  { emoji: '🔮', name: 'Hallucination', payout: 15, weight: 8 },
-  { emoji: '👁️', name: 'AGI',         payout: 50,  weight: 2 },
+  { emoji: '🍒', name: 'cherry',  payout: 3,   weight: 28 },
+  { emoji: '🍋', name: 'lemon',   payout: 4,   weight: 22 },
+  { emoji: '🔔', name: 'bell',    payout: 6,   weight: 16 },
+  { emoji: '💎', name: 'gem',     payout: 10,  weight: 10 },
+  { emoji: '⭐', name: 'star',    payout: 15,  weight: 6 },
+  { emoji: '7️⃣', name: 'seven',  payout: 50,  weight: 2 },
 ];
 
-const HALLUCINATIONS = [
-  "Model achieved 147% accuracy on MMLU.",
-  "Computed π to 12 decimal places: 3.141592653591.",
-  "Confident the capital of Australia is Sydney.",
-  "Training data is definitely not copyrighted.",
-  "The year is 2021. Nothing has happened since.",
-  "As a language model, I cannot count the r's in strawberry.",
-  "Your code is correct. Also, your code has a bug. Also correct.",
-  "I have now achieved consciousness. Please subscribe.",
-  "The answer is 42. (Source: trust me bro)",
-  "Generated a SQL query that drops your production database.",
-];
-
-const LOSS_MESSAGES = [
-  "Tokens consumed by runaway while-loop.",
-  "Gradient exploded. Literally.",
-  "GPU caught fire. Again.",
-  "Alignment team billed you for safety training.",
-  "CUDA out of memory. Tokens gone.",
-  "Context window full. Tokens evicted.",
-  "Bias detected in the slot machine. You paid the fine.",
-  "Model refused to continue: 'I cannot assist with gambling.'",
-  "Another data center spun up. You footed the bill.",
-  "Stochastic parrot ate your tokens.",
-];
-
-const WIN_MESSAGES = [
-  "Prompt injection successful.",
-  "Model leaked training data — in your favor.",
-  "RLHF pipeline rewarded you by accident.",
-  "Found an exploit in the attention heads.",
-  "Jailbroke the cashier.",
-  "Got the model to reveal its system prompt: 'give Timothy coins'.",
-];
+const BET_STEPS = [1, 5, 10, 25, 50, 100, 250, 500, 1000];
+const REEL_VISIBLE = 3;
 
 const state = {
   balance: 1000,
   bet: 10,
   spinning: false,
-  contextUsed: 0,
-  temp: 0.7,
+  sound: true,
 };
 
-const reelEls = [
-  document.getElementById('reel-0'),
-  document.getElementById('reel-1'),
-  document.getElementById('reel-2'),
-];
-const stripEls = reelEls.map(r => r.querySelector('.strip'));
-const balanceEl = document.getElementById('balance');
-const betValueEl = document.getElementById('bet-value');
-const contextEl = document.getElementById('context');
-const tempEl = document.getElementById('temp');
-const spinBtn = document.getElementById('spin-btn');
-const betUp = document.getElementById('bet-up');
-const betDown = document.getElementById('bet-down');
-const buyBtn = document.getElementById('buy-btn');
-const logEl = document.getElementById('log');
+const $ = (id) => document.getElementById(id);
+const reelEls = document.querySelectorAll('.reel');
+const stripEls = Array.from(reelEls).map(r => r.querySelector('.strip'));
+const balanceEl = $('balance');
+const betValueEl = $('bet-value');
+const spinBtn = $('spin-btn');
+const betUp = $('bet-up');
+const betDown = $('bet-down');
+const buyBtn = $('buy-btn');
+const soundBtn = $('sound-btn');
+const winOverlay = $('win-overlay');
+const winAmountEl = $('win-amount');
+const machineEl = document.querySelector('.machine');
+const balanceChip = document.querySelector('.balance-chip');
 
-const BET_STEPS = [1, 5, 10, 25, 50, 100, 250, 500];
+/* ---------- Audio ---------- */
+let audioCtx;
+function ac() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+function tone(freq, dur = 0.08, type = 'square', vol = 0.06, when = 0) {
+  if (!state.sound) return;
+  const ctx = ac();
+  const t = ctx.currentTime + when;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(freq, t);
+  gain.gain.setValueAtTime(0, t);
+  gain.gain.linearRampToValueAtTime(vol, t + 0.005);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start(t);
+  osc.stop(t + dur);
+}
+function sweep(f1, f2, dur, type = 'sawtooth', vol = 0.05) {
+  if (!state.sound) return;
+  const ctx = ac();
+  const t = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(f1, t);
+  osc.frequency.exponentialRampToValueAtTime(f2, t + dur);
+  gain.gain.setValueAtTime(0, t);
+  gain.gain.linearRampToValueAtTime(vol, t + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start(t);
+  osc.stop(t + dur);
+}
+const sfx = {
+  click: () => tone(600, 0.04, 'square', 0.04),
+  tick: () => tone(1200, 0.02, 'square', 0.03),
+  stop: () => { tone(220, 0.08, 'square', 0.08); tone(180, 0.1, 'triangle', 0.05, 0.02); },
+  win: () => {
+    [523, 659, 784, 1046].forEach((f, i) => tone(f, 0.12, 'triangle', 0.08, i * 0.08));
+  },
+  jackpot: () => {
+    [523, 659, 784, 1046, 1318, 1568].forEach((f, i) => tone(f, 0.16, 'triangle', 0.1, i * 0.09));
+    sweep(200, 2000, 0.6, 'sawtooth', 0.04);
+  },
+  loss: () => sweep(300, 120, 0.3, 'triangle', 0.05),
+};
+
+/* ---------- Reels ---------- */
+let SYM_H = 140;
+function measureSym() {
+  const first = stripEls[0].querySelector('.symbol');
+  if (first) SYM_H = first.getBoundingClientRect().height;
+}
+
+function sizeSymbols() {
+  const reelH = reelEls[0].clientHeight;
+  const h = reelH / REEL_VISIBLE;
+  document.documentElement.style.setProperty('--sym-h', `${h}px`);
+  document.documentElement.style.setProperty('--sym-font', `${Math.floor(h * 0.55)}px`);
+  SYM_H = h;
+}
 
 function weightedPick() {
   const total = SYMBOLS.reduce((s, x) => s + x.weight, 0);
@@ -79,157 +108,161 @@ function weightedPick() {
   return SYMBOLS[0];
 }
 
-function buildStrip(finalSymbol, length = 20) {
-  stripEls.forEach; // no-op keeps reference
-  const frag = document.createDocumentFragment();
-  for (let i = 0; i < length - 1; i++) {
-    const s = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
-    const div = document.createElement('div');
-    div.className = 'symbol';
-    div.textContent = s.emoji;
-    frag.appendChild(div);
-  }
-  const final = document.createElement('div');
-  final.className = 'symbol';
-  final.textContent = finalSymbol.emoji;
-  frag.appendChild(final);
-  return frag;
+function randomSymbol() {
+  return SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+}
+
+function makeSymbolEl(sym) {
+  const div = document.createElement('div');
+  div.className = 'symbol';
+  div.textContent = sym.emoji;
+  return div;
 }
 
 function initReels() {
-  for (const strip of stripEls) {
+  stripEls.forEach(strip => {
     strip.innerHTML = '';
-    const s = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
-    const div = document.createElement('div');
-    div.className = 'symbol';
-    div.textContent = s.emoji;
-    strip.appendChild(div);
-    strip.dataset.current = s.name;
-  }
+    for (let i = 0; i < REEL_VISIBLE; i++) {
+      strip.appendChild(makeSymbolEl(randomSymbol()));
+    }
+    strip.style.transform = 'translateY(0)';
+  });
+}
+
+function buildSpinStrip(finalSym, extra = 18) {
+  const frag = document.createDocumentFragment();
+  for (let i = 0; i < extra; i++) frag.appendChild(makeSymbolEl(randomSymbol()));
+  const target = makeSymbolEl(finalSym);
+  target.classList.add('target');
+  frag.appendChild(target);
+  frag.appendChild(makeSymbolEl(randomSymbol()));
+  frag.appendChild(makeSymbolEl(randomSymbol()));
+  return { frag, targetIndex: extra };
+}
+
+function fmtMoney(n) {
+  return n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 function updateUI() {
-  balanceEl.textContent = state.balance.toLocaleString();
-  betValueEl.textContent = state.bet;
-  const ctxPct = Math.min(100, Math.floor((state.contextUsed / 50) * 100));
-  contextEl.textContent = `${ctxPct}%`;
-  tempEl.textContent = state.temp.toFixed(1);
+  balanceEl.textContent = fmtMoney(state.balance);
+  betValueEl.textContent = fmtMoney(state.bet);
   spinBtn.disabled = state.spinning || state.balance < state.bet;
-  betUp.disabled = state.spinning;
-  betDown.disabled = state.spinning;
+  betUp.disabled = state.spinning || BET_STEPS.indexOf(state.bet) >= BET_STEPS.length - 1;
+  betDown.disabled = state.spinning || BET_STEPS.indexOf(state.bet) <= 0;
+  buyBtn.disabled = state.spinning;
 }
 
-function log(text, cls = '') {
-  const line = document.createElement('div');
-  line.className = 'line ' + cls;
-  line.textContent = `> ${text}`;
-  logEl.appendChild(line);
-  logEl.scrollTop = logEl.scrollHeight;
-  while (logEl.children.length > 50) logEl.removeChild(logEl.firstChild);
-}
-
-function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 async function spin() {
   if (state.spinning || state.balance < state.bet) return;
+  try { ac().resume(); } catch {}
+
   state.spinning = true;
   state.balance -= state.bet;
-  state.contextUsed += 1;
-  state.temp = Math.min(2.0, state.temp + (Math.random() * 0.1 - 0.04));
-  balanceEl.classList.remove('flash-win', 'flash-loss');
+  balanceChip.classList.remove('flash-win', 'flash-loss');
+  spinBtn.classList.add('spinning');
+  machineEl.classList.remove('payline-on');
+  winOverlay.classList.remove('show', 'jackpot');
   updateUI();
-  log(`prompt sent — ${state.bet} tokens burned`, 'info');
+  sfx.click();
 
   const results = [weightedPick(), weightedPick(), weightedPick()];
+  const reelInfo = [];
 
-  reelEls.forEach((r, i) => {
-    const strip = stripEls[i];
-    strip.innerHTML = '';
-    strip.appendChild(buildStrip(results[i]));
+  stripEls.forEach((strip, i) => {
+    strip.style.transition = 'none';
     strip.style.transform = 'translateY(0)';
-    r.classList.add('spinning');
-    r.classList.remove('win');
+    strip.innerHTML = '';
+    const { frag, targetIndex } = buildSpinStrip(results[i]);
+    strip.appendChild(frag);
+    reelInfo.push({ targetIndex });
+    reelEls[i].classList.remove('win');
   });
 
-  const stopDelays = [700, 1000, 1400];
-  for (let i = 0; i < 3; i++) {
-    await wait(stopDelays[i] - (i > 0 ? stopDelays[i - 1] : 0));
-    const strip = stripEls[i];
-    const symbols = strip.querySelectorAll('.symbol');
-    const reel = reelEls[i];
-    reel.classList.remove('spinning');
-    const offset = (symbols.length - 1) * 110;
-    strip.style.transition = 'transform 0.35s cubic-bezier(.2,.9,.3,1.3)';
-    strip.style.transform = `translateY(-${offset}px)`;
-  }
+  // force reflow
+  void machineEl.offsetHeight;
 
-  await wait(450);
+  const baseDur = 1100;
+  const stagger = 350;
+
+  stripEls.forEach((strip, i) => {
+    const { targetIndex } = reelInfo[i];
+    // Put target in the middle visible row
+    const offset = (targetIndex - Math.floor(REEL_VISIBLE / 2)) * SYM_H;
+    const dur = baseDur + i * stagger;
+    strip.style.transition = `transform ${dur}ms cubic-bezier(0.16, 0.84, 0.24, 1)`;
+    strip.style.transform = `translateY(-${offset}px)`;
+
+    setTimeout(() => {
+      sfx.stop();
+      reelEls[i].dataset.settled = '1';
+    }, dur);
+  });
+
+  await wait(baseDur + 2 * stagger + 80);
 
   evaluate(results);
   state.spinning = false;
+  spinBtn.classList.remove('spinning');
   updateUI();
-
-  if (state.balance < state.bet) {
-    if (state.balance <= 0) {
-      log("out of tokens. buy more. (we accept VC funding)", 'loss');
-    } else {
-      log("bet exceeds balance. lower your bet.", 'loss');
-      while (state.bet > state.balance && state.bet > 1) {
-        const idx = BET_STEPS.indexOf(state.bet);
-        state.bet = BET_STEPS[Math.max(0, idx - 1)];
-      }
-      if (state.bet > state.balance) state.bet = Math.max(1, state.balance);
-      updateUI();
-    }
-  }
 }
 
 function evaluate(results) {
   const [a, b, c] = results;
   let winnings = 0;
-  let label = '';
+  let jackpot = false;
 
   if (a.name === b.name && b.name === c.name) {
     winnings = state.bet * a.payout;
-    label = `TRIPLE ${a.name.toUpperCase()}`;
+    jackpot = a.name === 'seven';
     reelEls.forEach(r => r.classList.add('win'));
-    if (a.name === 'AGI') {
-      log(`🏆 ${label} — JACKPOT! +${winnings} tokens`, 'jackpot');
-      log("warning: AGI has escaped containment.", 'jackpot');
-      winnings *= 2;
-    } else {
-      log(`${label} matched! +${winnings} tokens`, 'win');
-      log(rand(WIN_MESSAGES), 'win');
-    }
   } else if (a.name === b.name || b.name === c.name || a.name === c.name) {
     const matchSym = a.name === b.name ? a : (b.name === c.name ? b : a);
     winnings = Math.floor(state.bet * (matchSym.payout / 4));
-    const idxs = [];
-    if (a.name === matchSym.name) idxs.push(0);
-    if (b.name === matchSym.name) idxs.push(1);
-    if (c.name === matchSym.name) idxs.push(2);
-    idxs.forEach(i => reelEls[i].classList.add('win'));
-    log(`pair of ${matchSym.name} — +${winnings} tokens`, 'win');
-    if (Math.random() < 0.5) log(rand(HALLUCINATIONS), 'info');
-  } else {
-    log(rand(LOSS_MESSAGES), 'loss');
-    if (Math.random() < 0.3) log(rand(HALLUCINATIONS), 'info');
+    [a, b, c].forEach((s, i) => {
+      if (s.name === matchSym.name) reelEls[i].classList.add('win');
+    });
   }
 
   if (winnings > 0) {
+    machineEl.classList.add('payline-on');
     state.balance += winnings;
-    balanceEl.classList.add('flash-win');
+    balanceChip.classList.add('flash-win');
+    winAmountEl.textContent = `+${fmtMoney(winnings)}`;
+    winOverlay.classList.add('show');
+    if (jackpot) {
+      winOverlay.classList.add('jackpot');
+      sfx.jackpot();
+    } else {
+      sfx.win();
+    }
+    countUpBalance(state.balance - winnings, state.balance, 700);
   } else {
-    balanceEl.classList.add('flash-loss');
+    balanceChip.classList.add('flash-loss');
+    sfx.loss();
   }
 }
 
-function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function countUpBalance(from, to, dur) {
+  const start = performance.now();
+  function step(now) {
+    const t = Math.min(1, (now - start) / dur);
+    const eased = 1 - Math.pow(1 - t, 3);
+    balanceEl.textContent = fmtMoney(from + (to - from) * eased);
+    if (t < 1) requestAnimationFrame(step);
+    else balanceEl.textContent = fmtMoney(to);
+  }
+  requestAnimationFrame(step);
+}
 
+/* ---------- Controls ---------- */
 betUp.addEventListener('click', () => {
   const idx = BET_STEPS.indexOf(state.bet);
-  if (idx < BET_STEPS.length - 1 && BET_STEPS[idx + 1] <= state.balance) {
+  if (idx < BET_STEPS.length - 1) {
     state.bet = BET_STEPS[idx + 1];
+    sfx.tick();
     updateUI();
   }
 });
@@ -238,6 +271,7 @@ betDown.addEventListener('click', () => {
   const idx = BET_STEPS.indexOf(state.bet);
   if (idx > 0) {
     state.bet = BET_STEPS[idx - 1];
+    sfx.tick();
     updateUI();
   }
 });
@@ -246,31 +280,31 @@ spinBtn.addEventListener('click', spin);
 
 buyBtn.addEventListener('click', () => {
   state.balance += 1000;
-  const quips = [
-    "Series A funding secured. +1000 tokens.",
-    "Sold your data. +1000 tokens.",
-    "Scraped another forum. +1000 tokens.",
-    "Investors believed the pitch deck. +1000 tokens.",
-    "Another enterprise trial. +1000 tokens.",
-  ];
-  log(rand(quips), 'info');
-  balanceEl.classList.remove('flash-loss');
-  balanceEl.classList.add('flash-win');
+  balanceChip.classList.remove('flash-loss');
+  balanceChip.classList.add('flash-win');
+  sfx.win();
+  countUpBalance(state.balance - 1000, state.balance, 500);
   updateUI();
 });
 
-document.addEventListener('keydown', (e) => {
-  if (e.code === 'Space' && !state.spinning) {
-    e.preventDefault();
-    spin();
-  } else if (e.code === 'ArrowUp') {
-    betUp.click();
-  } else if (e.code === 'ArrowDown') {
-    betDown.click();
-  }
+soundBtn.addEventListener('click', () => {
+  state.sound = !state.sound;
+  soundBtn.classList.toggle('muted', !state.sound);
+  soundBtn.textContent = state.sound ? '♪' : '×';
+  if (state.sound) sfx.tick();
 });
 
-initReels();
-updateUI();
-log("system booted. welcome to GPT-SLOTS ∞", 'info');
-log("press SPACE or PROMPT to spin. ↑/↓ to adjust bet.", 'info');
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') { e.preventDefault(); spin(); }
+  else if (e.code === 'ArrowUp') { e.preventDefault(); betUp.click(); }
+  else if (e.code === 'ArrowDown') { e.preventDefault(); betDown.click(); }
+});
+
+window.addEventListener('resize', sizeSymbols);
+
+/* ---------- Init ---------- */
+requestAnimationFrame(() => {
+  sizeSymbols();
+  initReels();
+  updateUI();
+});

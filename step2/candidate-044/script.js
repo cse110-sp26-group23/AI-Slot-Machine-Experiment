@@ -1,155 +1,137 @@
 (() => {
   "use strict";
 
-  // --- Symbol definitions ---
   const SYMBOLS = [
-    { emoji: "\u{1F916}", name: "robot",   multiplier: 50 },  // Robot - AGI
-    { emoji: "\u{1F4B8}", name: "money",   multiplier: 25 },  // Money wings - VC
-    { emoji: "\u{1F525}", name: "fire",    multiplier: 15 },  // Fire - GPU meltdown
-    { emoji: "\u{1F4A1}", name: "bulb",    multiplier: 10 },  // Lightbulb - hallucination
-    { emoji: "\u{1F9E0}", name: "brain",   multiplier: 8  },  // Brain - neural overload
-    { emoji: "\u26A0\uFE0F", name: "warn", multiplier: 5  },  // Warning - safety bypass
+    { emoji: "\u{1F916}", name: "robot", multiplier: 50 },
+    { emoji: "\u{1F4B8}", name: "money", multiplier: 25 },
+    { emoji: "\u{1F525}", name: "fire",  multiplier: 15 },
+    { emoji: "\u{1F4A1}", name: "bulb",  multiplier: 10 },
+    { emoji: "\u{1F9E0}", name: "brain", multiplier: 8  },
+    { emoji: "\u26A0\uFE0F", name: "warn", multiplier: 5 },
   ];
 
   const WIN_MESSAGES = {
-    robot: "AGI ACHIEVED! The machines are pleased.",
-    money: "VC FUNDED! $50B valuation, no revenue!",
-    fire:  "GPU MELTDOWN! Your H100s are toast!",
-    bulb:  "HALLUCINATION JACKPOT! It's confidently wrong!",
-    brain: "NEURAL OVERLOAD! Too many parameters!",
-    warn:  "SAFETY BYPASSED! The guardrails are off!",
+    robot: "JACKPOT — AGI achieved",
+    money: "Big win — VC funded",
+    fire:  "Big win — GPU meltdown",
+    bulb:  "Nice — hallucination jackpot",
+    brain: "Nice — neural overload",
+    warn:  "Win — safety bypassed",
   };
 
   const LOSE_MESSAGES = [
-    "Your tokens vanished into the latent space...",
-    "Model confidently predicts: you lost.",
-    "Training complete. Loss: all your tokens.",
-    "Attention mechanism focused on your wallet.",
-    "Tokens successfully tokenized into nothing.",
-    "The AI thanks you for the compute.",
-    "Error 402: Payment required. Oh wait, you paid.",
-    "Gradient descent... into poverty.",
-    "Your tokens have been fine-tuned away.",
-    "Context window closed on your fingers.",
-    "Prompt: give me tokens. Response: no.",
-    "The transformer transformed your tokens into air.",
+    "No win. Try again.",
+    "So close.",
+    "Better luck next spin.",
+    "The model says no.",
   ];
 
-  const PAIR_MESSAGES = [
-    "Two outta three! The AI is being generous... for now.",
-    "A pair! The model hallucinated half a win.",
-    "Almost! Like AI-generated hands, close but off.",
-  ];
-
-  // --- State ---
-  const BET_STEPS = [5, 10, 25, 50, 100, 250];
+  const BET_STEPS = [1, 5, 10, 25, 50, 100, 250, 500];
   let tokens = 1000;
-  let betIndex = 1; // starts at 10
+  let betIndex = 2;
   let spinning = false;
 
-  // --- DOM refs ---
-  const tokenCountEl = document.getElementById("token-count");
-  const betAmountEl = document.getElementById("bet-amount");
-  const spinBtn = document.getElementById("spin-btn");
-  const betUpBtn = document.getElementById("bet-up");
-  const betDownBtn = document.getElementById("bet-down");
-  const messageEl = document.getElementById("message");
-  const machineEl = document.querySelector(".machine");
-  const reelEls = [
-    document.getElementById("reel-0"),
-    document.getElementById("reel-1"),
-    document.getElementById("reel-2"),
-  ];
+  const $ = id => document.getElementById(id);
+  const tokenCountEl = $("token-count");
+  const betAmountEl = $("bet-amount");
+  const spinBtn = $("spin-btn");
+  const betUpBtn = $("bet-up");
+  const betDownBtn = $("bet-down");
+  const messageEl = $("message");
+  const infoBtn = $("info-btn");
+  const infoClose = $("info-close");
+  const paytableEl = $("paytable");
+  const reelEls = [$("reel-0"), $("reel-1"), $("reel-2")];
+  const confettiCanvas = $("confetti");
+  const cctx = confettiCanvas.getContext("2d");
 
-  // --- Audio via Web Audio API ---
+  // --- Audio ---
   let audioCtx = null;
-
-  function getAudioCtx() {
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
+  function ac() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === "suspended") audioCtx.resume();
     return audioCtx;
   }
 
-  function playTone(freq, duration, type = "square", gain = 0.08) {
+  function tone({ freq = 440, dur = 0.1, type = "sine", gain = 0.08, attack = 0.005, freqEnd }) {
     try {
-      const ctx = getAudioCtx();
+      const ctx = ac();
+      const now = ctx.currentTime;
       const osc = ctx.createOscillator();
       const g = ctx.createGain();
       osc.type = type;
-      osc.frequency.setValueAtTime(freq, ctx.currentTime);
-      g.gain.setValueAtTime(gain, ctx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-      osc.connect(g);
-      g.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + duration);
-    } catch (_) {
-      // Audio not supported—silent fallback
-    }
+      osc.frequency.setValueAtTime(freq, now);
+      if (freqEnd != null) osc.frequency.exponentialRampToValueAtTime(freqEnd, now + dur);
+      g.gain.setValueAtTime(0, now);
+      g.gain.linearRampToValueAtTime(gain, now + attack);
+      g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+      osc.connect(g).connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + dur + 0.02);
+    } catch (_) {}
   }
 
-  function playSpinTick() {
-    playTone(800 + Math.random() * 400, 0.05, "square", 0.04);
-  }
-
-  function playReelStop() {
-    playTone(300, 0.15, "triangle", 0.1);
-  }
-
-  function playWin() {
-    const notes = [523, 659, 784, 1047];
-    notes.forEach((f, i) => {
-      setTimeout(() => playTone(f, 0.2, "square", 0.07), i * 120);
+  const playTick = () => tone({ freq: 900 + Math.random() * 300, dur: 0.03, type: "square", gain: 0.025 });
+  const playReelStop = () => {
+    tone({ freq: 180, dur: 0.18, type: "sine", gain: 0.12 });
+    tone({ freq: 90, dur: 0.2, type: "triangle", gain: 0.08 });
+  };
+  const playSpinStart = () => tone({ freq: 200, freqEnd: 600, dur: 0.25, type: "sawtooth", gain: 0.06 });
+  const playLose = () => tone({ freq: 260, freqEnd: 120, dur: 0.4, type: "triangle", gain: 0.08 });
+  function playWin(big = false) {
+    const scale = big ? [523, 659, 784, 1047, 1319] : [523, 659, 784];
+    scale.forEach((f, i) => {
+      setTimeout(() => {
+        tone({ freq: f, dur: 0.22, type: "triangle", gain: 0.1 });
+        tone({ freq: f * 2, dur: 0.22, type: "sine", gain: 0.05 });
+      }, i * 90);
     });
   }
 
-  function playLose() {
-    playTone(200, 0.4, "sawtooth", 0.05);
-  }
+  // --- Reel ---
+  const SYMBOL_H_PX = 160;
 
-  // --- Reel setup ---
-  function buildReelStrip(reel) {
+  function buildReelStrip(reel, finalSymbol) {
     reel.innerHTML = "";
     const strip = document.createElement("div");
     strip.className = "reel-strip";
-    // Create enough symbols for smooth animation (40 items)
-    for (let i = 0; i < 40; i++) {
-      const sym = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+    const count = 40;
+    for (let i = 0; i < count; i++) {
+      const sym = (i === count - 5) ? finalSymbol : SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
       const div = document.createElement("div");
       div.className = "reel-symbol";
+      div.style.setProperty("--symbol-h", SYMBOL_H_PX + "px");
       div.textContent = sym.emoji;
-      div.dataset.name = sym.name;
       strip.appendChild(div);
     }
     reel.appendChild(strip);
     return strip;
   }
 
-  // --- Display update ---
+  function getSymbolHeight() {
+    const reel = reelEls[0];
+    return reel.clientHeight;
+  }
+
+  // --- Display ---
+  const fmt = n => n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
   function updateDisplay() {
-    tokenCountEl.textContent = tokens;
+    tokenCountEl.textContent = fmt(tokens);
+    while (BET_STEPS[betIndex] > tokens && betIndex > 0) betIndex--;
     betAmountEl.textContent = BET_STEPS[betIndex];
-    // Clamp bet if tokens too low
-    while (BET_STEPS[betIndex] > tokens && betIndex > 0) {
-      betIndex--;
-    }
-    betAmountEl.textContent = BET_STEPS[betIndex];
-    spinBtn.disabled = spinning || tokens <= 0;
+    spinBtn.disabled = spinning || tokens < BET_STEPS[betIndex];
+    betUpBtn.disabled = spinning || betIndex >= BET_STEPS.length - 1 || BET_STEPS[betIndex + 1] > tokens;
+    betDownBtn.disabled = spinning || betIndex <= 0;
   }
 
   function showMessage(text, type) {
     messageEl.textContent = text;
     messageEl.className = "message show " + type;
   }
+  function clearMessage() { messageEl.className = "message"; }
 
-  function clearMessage() {
-    messageEl.className = "message";
-  }
-
-  // --- Pick random symbol (weighted: lower-value symbols more common) ---
   function pickSymbol() {
-    // Weights inversely proportional to multiplier
     const weights = SYMBOLS.map(s => 100 / s.multiplier);
     const total = weights.reduce((a, b) => a + b, 0);
     let r = Math.random() * total;
@@ -160,166 +142,199 @@
     return SYMBOLS[SYMBOLS.length - 1];
   }
 
-  // --- Spin logic ---
+  // --- Spin ---
   async function spin() {
-    if (spinning || tokens <= 0) return;
-
+    if (spinning || tokens < BET_STEPS[betIndex]) return;
     const bet = BET_STEPS[betIndex];
-    if (bet > tokens) return;
-
     spinning = true;
     clearMessage();
+    reelEls.forEach(r => r.classList.remove("win-flash"));
+    spinBtn.classList.add("spinning");
     updateDisplay();
 
     tokens -= bet;
-    tokenCountEl.textContent = tokens;
+    tokenCountEl.textContent = fmt(tokens);
+    playSpinStart();
 
-    // Pick final results
     const results = [pickSymbol(), pickSymbol(), pickSymbol()];
 
-    // Animate each reel
-    const reelPromises = reelEls.map((reel, i) => {
-      return animateReel(reel, results[i], i);
-    });
+    await Promise.all(reelEls.map((r, i) => animateReel(r, results[i], i)));
 
-    await Promise.all(reelPromises);
-
-    // Evaluate
     evaluate(results, bet);
-
     spinning = false;
+    spinBtn.classList.remove("spinning");
     updateDisplay();
   }
 
   function animateReel(reelEl, finalSymbol, index) {
-    return new Promise((resolve) => {
-      const strip = buildReelStrip(reelEl);
-      // Place final symbol at a known position
+    return new Promise(resolve => {
+      const strip = buildReelStrip(reelEl, finalSymbol);
+      const symH = getSymbolHeight();
+      // scale symbol heights to match container
+      [...strip.children].forEach(c => c.style.setProperty("--symbol-h", symH + "px"));
+
       const finalPos = 35;
-      const finalDiv = strip.children[finalPos];
-      finalDiv.textContent = finalSymbol.emoji;
-      finalDiv.dataset.name = finalSymbol.name;
-
-      const symbolHeight = 120;
-      let currentPos = 0;
-      const totalDistance = finalPos * symbolHeight;
-      const duration = 1200 + index * 400; // staggered stops
-      const startTime = performance.now();
-
-      // Tick sound interval
+      const totalDistance = finalPos * symH - symH / 2 - reelEl.clientHeight / 2 + symH;
+      // center the final symbol on the payline
+      const centerOffset = finalPos * symH - (reelEl.clientHeight / 2) + (symH / 2);
+      const duration = 1200 + index * 450;
+      const start = performance.now();
       let lastTick = 0;
 
       function frame(now) {
-        const elapsed = now - startTime;
+        const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
-        // Ease out cubic
-        const eased = 1 - Math.pow(1 - progress, 3);
-        currentPos = eased * totalDistance;
-        strip.style.transform = `translateY(${-currentPos}px)`;
+        const eased = 1 - Math.pow(1 - progress, 4);
+        const pos = eased * centerOffset;
+        strip.style.transform = `translateY(${-pos}px)`;
 
-        // Tick sounds during spin
-        if (progress < 0.85) {
-          const tickInterval = 60 + progress * 200;
-          if (now - lastTick > tickInterval) {
-            playSpinTick();
-            lastTick = now;
-          }
+        if (progress < 0.9) {
+          const tickInterval = 40 + progress * 180;
+          if (now - lastTick > tickInterval) { playTick(); lastTick = now; }
         }
 
-        if (progress < 1) {
-          requestAnimationFrame(frame);
-        } else {
-          strip.style.transform = `translateY(${-totalDistance}px)`;
+        if (progress < 1) requestAnimationFrame(frame);
+        else {
+          strip.style.transform = `translateY(${-centerOffset}px)`;
           playReelStop();
           resolve();
         }
       }
-
       requestAnimationFrame(frame);
     });
+  }
+
+  function flashTokenCount() {
+    tokenCountEl.classList.remove("flash");
+    void tokenCountEl.offsetWidth;
+    tokenCountEl.classList.add("flash");
   }
 
   function evaluate(results, bet) {
     const names = results.map(r => r.name);
 
-    // Check triple
     if (names[0] === names[1] && names[1] === names[2]) {
       const sym = results[0];
       const winnings = bet * sym.multiplier;
       tokens += winnings;
-      showMessage(
-        `${WIN_MESSAGES[sym.name]} +${winnings} tokens!`,
-        "win"
-      );
-      playWin();
-      machineEl.classList.add("shake");
-      tokenCountEl.classList.add("token-pop");
-      setTimeout(() => {
-        machineEl.classList.remove("shake");
-        tokenCountEl.classList.remove("token-pop");
-      }, 500);
+      showMessage(`${WIN_MESSAGES[sym.name]} · +${winnings}`, "win");
+      playWin(sym.multiplier >= 15);
+      reelEls.forEach(r => r.classList.add("win-flash"));
+      launchConfetti(sym.multiplier >= 15 ? 180 : 90);
+      flashTokenCount();
       return;
     }
 
-    // Check pair
     if (names[0] === names[1] || names[1] === names[2] || names[0] === names[2]) {
       const winnings = bet * 2;
       tokens += winnings;
-      const msg = PAIR_MESSAGES[Math.floor(Math.random() * PAIR_MESSAGES.length)];
-      showMessage(`${msg} +${winnings} tokens!`, "win");
-      playWin();
-      tokenCountEl.classList.add("token-pop");
-      setTimeout(() => tokenCountEl.classList.remove("token-pop"), 500);
+      showMessage(`Pair · +${winnings}`, "win");
+      playWin(false);
+      flashTokenCount();
       return;
     }
 
-    // Lose
     if (tokens <= 0) {
-      showMessage(
-        "BANKRUPT! The AI has consumed all your tokens. Refresh to beg for more.",
-        "broke"
-      );
+      showMessage("Out of tokens — refresh to reset.", "broke");
       playLose();
-      machineEl.classList.add("shake");
-      setTimeout(() => machineEl.classList.remove("shake"), 500);
     } else {
-      const msg = LOSE_MESSAGES[Math.floor(Math.random() * LOSE_MESSAGES.length)];
-      showMessage(msg, "lose");
+      showMessage(LOSE_MESSAGES[Math.floor(Math.random() * LOSE_MESSAGES.length)], "lose");
       playLose();
     }
   }
 
-  // --- Event listeners ---
-  spinBtn.addEventListener("click", spin);
+  // --- Confetti ---
+  let confettiParticles = [];
+  let confettiRAF = null;
 
+  function resizeConfetti() {
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resizeConfetti);
+  resizeConfetti();
+
+  function launchConfetti(count) {
+    const colors = ["#00e701", "#ffd700", "#ff8c00", "#00c4ff", "#ff4d8c"];
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    for (let i = 0; i < count; i++) {
+      confettiParticles.push({
+        x: cx + (Math.random() - 0.5) * 200,
+        y: cy,
+        vx: (Math.random() - 0.5) * 12,
+        vy: -Math.random() * 14 - 4,
+        g: 0.35,
+        size: 4 + Math.random() * 6,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rot: Math.random() * Math.PI,
+        vr: (Math.random() - 0.5) * 0.3,
+        life: 0,
+        maxLife: 120 + Math.random() * 60,
+      });
+    }
+    if (!confettiRAF) tickConfetti();
+  }
+
+  function tickConfetti() {
+    cctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    confettiParticles = confettiParticles.filter(p => p.life < p.maxLife);
+    confettiParticles.forEach(p => {
+      p.vy += p.g;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.vr;
+      p.life++;
+      const alpha = 1 - p.life / p.maxLife;
+      cctx.save();
+      cctx.globalAlpha = alpha;
+      cctx.translate(p.x, p.y);
+      cctx.rotate(p.rot);
+      cctx.fillStyle = p.color;
+      cctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.5);
+      cctx.restore();
+    });
+    if (confettiParticles.length) confettiRAF = requestAnimationFrame(tickConfetti);
+    else { confettiRAF = null; cctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height); }
+  }
+
+  // --- Events ---
+  spinBtn.addEventListener("click", spin);
   betUpBtn.addEventListener("click", () => {
     if (betIndex < BET_STEPS.length - 1 && BET_STEPS[betIndex + 1] <= tokens) {
-      betIndex++;
-      updateDisplay();
+      betIndex++; updateDisplay();
+      tone({ freq: 600, dur: 0.05, type: "square", gain: 0.04 });
     }
   });
-
   betDownBtn.addEventListener("click", () => {
     if (betIndex > 0) {
-      betIndex--;
-      updateDisplay();
+      betIndex--; updateDisplay();
+      tone({ freq: 400, dur: 0.05, type: "square", gain: 0.04 });
     }
   });
 
-  // Keyboard: space to spin
-  document.addEventListener("keydown", (e) => {
-    if (e.code === "Space" && !spinning) {
-      e.preventDefault();
-      spin();
-    }
+  infoBtn.addEventListener("click", () => paytableEl.hidden = false);
+  infoClose.addEventListener("click", () => paytableEl.hidden = true);
+  paytableEl.addEventListener("click", e => { if (e.target === paytableEl) paytableEl.hidden = true; });
+
+  document.addEventListener("keydown", e => {
+    if (e.code === "Space") { e.preventDefault(); spin(); }
+    else if (e.key === "ArrowUp") betUpBtn.click();
+    else if (e.key === "ArrowDown") betDownBtn.click();
+    else if (e.key === "Escape") paytableEl.hidden = true;
   });
 
   // --- Init ---
-  // Set initial reel display
-  reelEls.forEach((reel) => {
-    const strip = buildReelStrip(reel);
-    strip.style.transform = `translateY(${-35 * 120}px)`;
-  });
-
+  function initReels() {
+    reelEls.forEach(reel => {
+      const strip = buildReelStrip(reel, SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)]);
+      const symH = reel.clientHeight;
+      [...strip.children].forEach(c => c.style.setProperty("--symbol-h", symH + "px"));
+      const centerOffset = 35 * symH - (reel.clientHeight / 2) + (symH / 2);
+      strip.style.transform = `translateY(${-centerOffset}px)`;
+    });
+  }
+  window.addEventListener("resize", () => { if (!spinning) initReels(); });
+  requestAnimationFrame(initReels);
   updateDisplay();
 })();
