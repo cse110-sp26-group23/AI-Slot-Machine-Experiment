@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM Slot Machine — Feed the Model</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cabinet">
+    <header class="marquee">
+      <h1 class="marquee-title">LLM SLOTS</h1>
+      <p class="marquee-sub">Feed Tokens. Get Nonsense. Repeat.</p>
+      <div class="marquee-lights" id="marqueLights"></div>
+    </header>
+
+    <div class="display">
+      <!-- Token balance -->
+      <div class="balance-bar">
+        <div class="balance-group">
+          <span class="balance-label">PROMPT BUDGET</span>
+          <span class="balance-amount" id="balance">1,000</span>
+          <span class="balance-unit">tokens</span>
+        </div>
+        <div class="balance-group right">
+          <span class="balance-label">SESSION P/L</span>
+          <span class="balance-pnl neutral" id="pnl">0</span>
+        </div>
+      </div>
+
+      <!-- Bet selector -->
+      <div class="bet-bar">
+        <span class="bet-label">BET:</span>
+        <button class="bet-btn active" data-bet="10">10</button>
+        <button class="bet-btn" data-bet="25">25</button>
+        <button class="bet-btn" data-bet="50">50</button>
+        <button class="bet-btn" data-bet="100">100</button>
+        <span class="bet-suffix">tokens/inference</span>
+      </div>
+
+      <!-- Reels -->
+      <div class="reels-frame">
+        <div class="reel-shadow top"></div>
+        <div class="reel-shadow bottom"></div>
+        <div class="payline"></div>
+        <div class="reel" id="reel0">
+          <div class="reel-strip" id="strip0"></div>
+        </div>
+        <div class="reel" id="reel1">
+          <div class="reel-strip" id="strip1"></div>
+        </div>
+        <div class="reel" id="reel2">
+          <div class="reel-strip" id="strip2"></div>
+        </div>
+      </div>
+
+      <!-- Result message -->
+      <div class="message-box">
+        <p class="message" id="message">Insert tokens to query the model...</p>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="btn-spin" id="spinBtn">
+          <span class="btn-spin-icon">▶</span>
+          <span class="btn-spin-text">RUN INFERENCE</span>
+        </button>
+        <button class="btn-fund" id="fundBtn">💸 VC FUNDING</button>
+      </div>
+
+      <!-- Stats row -->
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-value" id="statQueries">0</div>
+          <div class="stat-label">Queries</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="statHits">0</div>
+          <div class="stat-label">Hits</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="statAccuracy">0%</div>
+          <div class="stat-label">Accuracy</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="statBurned">0</div>
+          <div class="stat-label">Burned</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paytable toggle -->
+    <details class="paytable">
+      <summary class="paytable-header">📄 Model Card / Payout Table</summary>
+      <div class="paytable-body" id="paytableBody"></div>
+    </details>
+
+    <footer class="footer">
+      <p>⚠️ This model may produce inaccurate payouts. Use at your own risk. Not financial advice. Not any advice, really.</p>
+    </footer>
+  </div>
+
+  <div class="floating-tokens" id="floatingTokens"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
