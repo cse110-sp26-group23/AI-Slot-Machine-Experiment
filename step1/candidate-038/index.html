@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Token Burner 9000 — AI Slot Machine</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="cabinet">
+    <header class="header">
+      <h1 class="title">TOKEN BURNER <span class="glow">9000</span></h1>
+      <p class="subtitle">Where your tokens go to die&thinsp;—&thinsp;just like your API budget</p>
+    </header>
+
+    <section class="dashboard" aria-live="polite">
+      <div class="stat-card">
+        <span class="stat-label">Token Wallet</span>
+        <span class="stat-value" id="balance">500</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Wager</span>
+        <div class="bet-row">
+          <button class="bet-btn" id="betDown" aria-label="Decrease bet">&minus;</button>
+          <span class="stat-value" id="bet">25</span>
+          <button class="bet-btn" id="betUp" aria-label="Increase bet">+</button>
+        </div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Last Win</span>
+        <span class="stat-value" id="lastWin">0</span>
+      </div>
+    </section>
+
+    <section class="reel-window" id="reelWindow">
+      <div class="reel" id="reel0"><div class="strip"></div></div>
+      <div class="reel" id="reel1"><div class="strip"></div></div>
+      <div class="reel" id="reel2"><div class="strip"></div></div>
+    </section>
+
+    <section class="actions">
+      <button class="spin-btn" id="spinBtn">
+        <span class="spin-label">BURN TOKENS</span>
+        <span class="spin-cost" id="spinCost">−25 tokens</span>
+      </button>
+      <button class="bailout-btn" id="bailoutBtn" hidden>Beg the AI Overlords for More</button>
+    </section>
+
+    <section class="feed" aria-live="polite">
+      <h2 class="feed-title">AI Commentary</h2>
+      <ul id="feed"></ul>
+    </section>
+
+    <footer class="disclaimer">
+      <p>Side effects may include: hallucinated winnings, spontaneous confabulation, and an empty API wallet. The house (a large language model) always wins. This is not financial, legal, or existential advice.</p>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
