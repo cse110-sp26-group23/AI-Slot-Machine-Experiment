@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hallucin-8-Bit :: The AI Slot Machine</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="machine">
+    <header class="marquee">
+      <h1>HALLUCIN-8-BIT</h1>
+      <p class="tagline">The world's first <em>probabilistically honest</em> slot machine</p>
+    </header>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="label">TOKENS</span>
+        <span id="balance" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">BET</span>
+        <span id="bet" class="value">10</span>
+      </div>
+      <div class="stat">
+        <span class="label">CONTEXT WINDOW</span>
+        <span id="context" class="value">100%</span>
+      </div>
+    </section>
+
+    <section class="reels" aria-label="Slot reels">
+      <div class="reel" data-reel="0"><div class="strip"></div></div>
+      <div class="reel" data-reel="1"><div class="strip"></div></div>
+      <div class="reel" data-reel="2"><div class="strip"></div></div>
+      <div class="payline"></div>
+    </section>
+
+    <section class="message" id="message">
+      Insert tokens. Trust the process. Ignore the bias.
+    </section>
+
+    <section class="controls">
+      <button id="bet-down" class="btn small">−</button>
+      <button id="spin" class="btn primary">SPIN</button>
+      <button id="bet-up" class="btn small">+</button>
+    </section>
+
+    <section class="controls secondary">
+      <button id="max-bet" class="btn ghost">MAX BET</button>
+      <button id="reset" class="btn ghost">REFUND (beg dev)</button>
+    </section>
+
+    <footer class="legend">
+      <h2>PAYTABLE <small>(results may hallucinate)</small></h2>
+      <ul id="paytable"></ul>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

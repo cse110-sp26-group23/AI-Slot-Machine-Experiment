@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HalluciSlots™ — The AGI Casino</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="machine">
+  <header class="marquee">
+    <h1>HalluciSlots<span class="tm">™</span></h1>
+    <p class="tagline">Burn tokens. Win tokens. Achieve AGI*.</p>
+    <p class="fineprint">*AGI not included. Results may be hallucinated.</p>
+  </header>
+
+  <section class="hud">
+    <div class="stat">
+      <span class="label">Token Wallet</span>
+      <span class="value" id="balance">1000</span>
+    </div>
+    <div class="stat">
+      <span class="label">GPU Temp</span>
+      <span class="value" id="gputemp">42°C</span>
+    </div>
+    <div class="stat">
+      <span class="label">Context Used</span>
+      <span class="value" id="context">0%</span>
+    </div>
+  </section>
+
+  <section class="reels" id="reels">
+    <div class="reel" data-reel="0"><div class="strip"></div></div>
+    <div class="reel" data-reel="1"><div class="strip"></div></div>
+    <div class="reel" data-reel="2"><div class="strip"></div></div>
+  </section>
+
+  <section class="controls">
+    <div class="bet">
+      <button id="betDown" aria-label="Decrease bet">−</button>
+      <div class="betDisplay">
+        <span class="label">Bet</span>
+        <span class="value" id="bet">10</span>
+      </div>
+      <button id="betUp" aria-label="Increase bet">+</button>
+    </div>
+    <button id="spin" class="spinBtn">PROMPT&nbsp;&amp;&nbsp;PRAY</button>
+  </section>
+
+  <section class="ticker" id="ticker" aria-live="polite">
+    <p>Welcome, human. Please insert your entire salary to continue.</p>
+  </section>
+
+  <footer class="legal">
+    <button id="bailout" class="bailoutBtn">Beg OpenAI for a bailout</button>
+    <p>By playing you consent to your data training our next model.</p>
+  </footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

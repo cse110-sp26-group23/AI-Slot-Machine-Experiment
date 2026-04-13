@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hallucination Jackpot — The AI Slot Machine</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <h1>HALLUCINATION JACKPOT</h1>
+    <p class="tagline">Now with 100% more confident wrong answers</p>
+  </header>
+
+  <main class="machine">
+    <div class="stats">
+      <div class="stat">
+        <span class="label">Tokens</span>
+        <span id="tokens" class="value">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Context Window</span>
+        <span id="context" class="value">0 / 8</span>
+      </div>
+      <div class="stat">
+        <span class="label">Temperature</span>
+        <span id="temp" class="value">0.7</span>
+      </div>
+    </div>
+
+    <div class="reels">
+      <div class="reel" id="reel-0"><div class="strip"></div></div>
+      <div class="reel" id="reel-1"><div class="strip"></div></div>
+      <div class="reel" id="reel-2"><div class="strip"></div></div>
+      <div class="payline"></div>
+    </div>
+
+    <div class="controls">
+      <div class="bet-control">
+        <button id="bet-down" class="small-btn">−</button>
+        <div class="bet-display">
+          <span class="label">Prompt Cost</span>
+          <span id="bet" class="value">10</span>
+        </div>
+        <button id="bet-up" class="small-btn">+</button>
+      </div>
+      <button id="spin" class="spin-btn">INFERENCE</button>
+      <button id="max-bet" class="small-btn wide">MAX PROMPT</button>
+    </div>
+
+    <div class="message" id="message">Insert tokens. Pray for alignment.</div>
+
+    <div class="log-panel">
+      <div class="log-header">Training Log</div>
+      <ul id="log"></ul>
+    </div>
+  </main>
+
+  <section class="paytable">
+    <h2>Loss Function (Payouts)</h2>
+    <ul>
+      <li><span>🧠 🧠 🧠</span> AGI Achieved — <b>×50</b></li>
+      <li><span>🤖 🤖 🤖</span> Model Collapse Averted — <b>×25</b></li>
+      <li><span>📎 📎 📎</span> Clippy Resurrection — <b>×20</b></li>
+      <li><span>💾 💾 💾</span> Dataset Secured — <b>×15</b></li>
+      <li><span>🔥 🔥 🔥</span> GPU Go Brrr — <b>×10</b></li>
+      <li><span>🍓 🍓 🍓</span> Strawberry Has 3 R's — <b>×8</b></li>
+      <li><span>any two 🧠</span> Partial Credit — <b>×2</b></li>
+      <li><span>🦜 anywhere</span> Stochastic Parrot (refund) — <b>×1</b></li>
+      <li><span>👻 anywhere</span> Hallucination — <b>lose bet + 5</b></li>
+    </ul>
+  </section>
+
+  <footer>
+    <small>No weights were harmed. Tokens are not real. Neither is alignment.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
