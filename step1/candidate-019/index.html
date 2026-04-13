@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HalluciSlots™ — The AGI Casino</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="machine">
+    <header class="marquee">
+      <h1>HalluciSlots<span class="tm">™</span></h1>
+      <p class="tagline">Spend tokens. Win tokens. It's basically training.</p>
+    </header>
+
+    <section class="hud">
+      <div class="stat">
+        <span class="stat-label">Context Window</span>
+        <span class="stat-value" id="balance">1000</span>
+        <span class="stat-unit">tokens</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Bet / Spin</span>
+        <div class="bet-controls">
+          <button id="bet-down" aria-label="Decrease bet">−</button>
+          <span class="stat-value" id="bet">10</span>
+          <button id="bet-up" aria-label="Increase bet">+</button>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Last Payout</span>
+        <span class="stat-value" id="payout">0</span>
+      </div>
+    </section>
+
+    <section class="reels" id="reels">
+      <div class="reel" data-reel="0"><div class="strip"></div></div>
+      <div class="reel" data-reel="1"><div class="strip"></div></div>
+      <div class="reel" data-reel="2"><div class="strip"></div></div>
+      <div class="payline"></div>
+    </section>
+
+    <section class="controls">
+      <button id="spin" class="spin-btn">SPIN<small>(burn tokens)</small></button>
+      <button id="max" class="max-btn">MAX BET</button>
+      <button id="beg" class="beg-btn" hidden>BEG FOR MORE COMPUTE</button>
+    </section>
+
+    <section class="oracle" id="oracle">
+      <p>The oracle awaits your prompt. Pull the lever, human.</p>
+    </section>
+
+    <section class="paytable">
+      <h2>Paytable <small>(non-deterministic, trust us)</small></h2>
+      <ul id="paytable"></ul>
+    </section>
+
+    <footer class="fine-print">
+      <p>No actual intelligence was used in the making of this machine. Outputs may be hallucinated. Do not use this tool to file your taxes, diagnose illness, or replace your therapist. Odds trained on vibes.</p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

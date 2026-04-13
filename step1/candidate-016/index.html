@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPTSlots — Burn Tokens For Fun</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <header class="header">
+      <h1>GPT<span class="accent">Slots</span></h1>
+      <p class="tagline">Now with 100% more hallucinations</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-label">Token Balance</span>
+        <span class="stat-value" id="balance">1000</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Bet per Spin</span>
+        <span class="stat-value" id="bet">25</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Context Window</span>
+        <span class="stat-value" id="spins">0 / ∞</span>
+      </div>
+    </div>
+
+    <div class="reels" id="reels">
+      <div class="reel-frame"><div class="reel" id="reel-0"></div></div>
+      <div class="reel-frame"><div class="reel" id="reel-1"></div></div>
+      <div class="reel-frame"><div class="reel" id="reel-2"></div></div>
+      <div class="payline"></div>
+    </div>
+
+    <div class="message" id="message">Insert tokens. Pray to the stochastic parrot.</div>
+
+    <div class="controls">
+      <button class="btn btn-secondary" id="bet-down">– Bet</button>
+      <button class="btn btn-primary" id="spin-btn">SPIN</button>
+      <button class="btn btn-secondary" id="bet-up">+ Bet</button>
+    </div>
+
+    <button class="btn btn-ghost" id="refill-btn">Beg for VC funding (+500)</button>
+
+    <details class="paytable">
+      <summary>Paytable (what the model "thinks" things are worth)</summary>
+      <ul id="paytable-list"></ul>
+    </details>
+
+    <footer class="footer">
+      <p>Disclaimer: No actual intelligence was used in the making of this machine.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
