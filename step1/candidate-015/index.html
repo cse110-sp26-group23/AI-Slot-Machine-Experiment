@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hallucinator 3000 — The AI Slot Machine</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="machine">
+    <header class="marquee">
+      <h1>HALLUCINATOR 3000</h1>
+      <p class="tagline">Burn tokens. Chase emergent behavior. Pray to the loss curve.</p>
+    </header>
+
+    <section class="status">
+      <div class="stat">
+        <span class="stat-label">Context Window</span>
+        <span class="stat-value" id="balance">1000</span>
+        <span class="stat-unit">tokens</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Bet / Pull</span>
+        <span class="stat-value" id="bet">10</span>
+        <span class="stat-unit">tokens</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Temperature</span>
+        <span class="stat-value" id="temp">0.7</span>
+      </div>
+    </section>
+
+    <section class="reels" id="reels" aria-label="Slot reels">
+      <div class="reel" data-reel="0"><div class="strip"></div></div>
+      <div class="reel" data-reel="1"><div class="strip"></div></div>
+      <div class="reel" data-reel="2"><div class="strip"></div></div>
+      <div class="payline" aria-hidden="true"></div>
+    </section>
+
+    <section class="controls">
+      <button id="bet-down" class="btn btn-small" aria-label="Decrease bet">−</button>
+      <button id="spin" class="btn btn-spin">INFER</button>
+      <button id="bet-up" class="btn btn-small" aria-label="Increase bet">+</button>
+    </section>
+
+    <section class="console" aria-live="polite">
+      <div class="console-header">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="console-title">training.log</span>
+      </div>
+      <div class="console-body" id="log"></div>
+    </section>
+
+    <footer class="fineprint">
+      <p>⚠ Past performance is not indicative of future tokens. Model may hallucinate winnings. Not FDIC insured. Void where prompted.</p>
+      <button id="reset" class="btn btn-ghost">Reinitialize Weights</button>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

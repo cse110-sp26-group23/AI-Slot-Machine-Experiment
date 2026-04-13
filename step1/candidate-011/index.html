@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hallucinat-O-Matic 9000</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="machine">
+    <header class="top">
+      <h1>HALLUCINAT-O-MATIC <span class="v">9000</span></h1>
+      <p class="tagline">Now with 200% more confident wrong answers!</p>
+    </header>
+
+    <section class="stats">
+      <div class="stat">
+        <span class="label">Tokens</span>
+        <span class="value" id="balance">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Cost / Spin</span>
+        <span class="value" id="cost">50</span>
+      </div>
+      <div class="stat">
+        <span class="label">Context Window</span>
+        <span class="value" id="context">8k</span>
+      </div>
+    </section>
+
+    <section class="reels" id="reels">
+      <div class="reel"><div class="strip" id="strip-0"></div></div>
+      <div class="reel"><div class="strip" id="strip-1"></div></div>
+      <div class="reel"><div class="strip" id="strip-2"></div></div>
+      <div class="payline"></div>
+    </section>
+
+    <section class="message" id="message">Insert prompt. Receive plausible nonsense.</section>
+
+    <section class="controls">
+      <button id="spin" class="spin-btn">SPIN ($50 tokens)</button>
+      <button id="bailout" class="bailout-btn" hidden>Beg VC for more tokens</button>
+    </section>
+
+    <details class="paytable">
+      <summary>Paytable &amp; Terms of Service</summary>
+      <table>
+        <thead><tr><th>Match</th><th>Payout</th><th>Lore</th></tr></thead>
+        <tbody id="paytable-body"></tbody>
+      </table>
+      <p class="fine-print">
+        By spinning, you agree that outputs may be hallucinated, biased,
+        fabricated, or suspiciously confident. Not financial advice.
+        Not medical advice. Definitely not legal advice. Your tokens may
+        go up, down, or be spent on GPU electricity bills.
+      </p>
+    </details>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

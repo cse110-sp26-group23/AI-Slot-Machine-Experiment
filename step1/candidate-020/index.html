@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hallucin-o-Matic 3000 — The AI Slot Machine</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="machine">
+    <header class="marquee">
+      <h1>HALLUCIN-O-MATIC <span class="sub">3000</span></h1>
+      <p class="tagline">Feed it tokens. Pray for coherence.</p>
+    </header>
+
+    <section class="stats" aria-live="polite">
+      <div class="stat">
+        <span class="label">Token Balance</span>
+        <span class="value" id="balance">1000</span>
+      </div>
+      <div class="stat">
+        <span class="label">Bet</span>
+        <div class="bet-controls">
+          <button id="betDown" aria-label="Decrease bet">−</button>
+          <span class="value" id="bet">10</span>
+          <button id="betUp" aria-label="Increase bet">+</button>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="label">Last Payout</span>
+        <span class="value" id="payout">0</span>
+      </div>
+    </section>
+
+    <section class="reels" id="reels">
+      <div class="reel" data-reel="0"><div class="strip"></div></div>
+      <div class="reel" data-reel="1"><div class="strip"></div></div>
+      <div class="reel" data-reel="2"><div class="strip"></div></div>
+    </section>
+
+    <section class="controls">
+      <button id="spin" class="spin-btn">SPIN ($10)</button>
+      <button id="beg" class="beg-btn" hidden>Beg for more tokens</button>
+    </section>
+
+    <section class="log" aria-live="polite">
+      <h2>System Output</h2>
+      <ul id="log"></ul>
+    </section>
+
+    <footer class="fine-print">
+      <p>By spinning you agree to our 47-page Terms of Service. Past hallucinations do not guarantee future hallucinations. Not financial advice. Definitely not sentient.</p>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

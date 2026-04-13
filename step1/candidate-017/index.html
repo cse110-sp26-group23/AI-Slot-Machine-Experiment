@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hallucination Jackpot — The AI Slot Machine</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="cabinet">
+    <header class="marquee">
+      <h1>HALLUCINATION JACKPOT</h1>
+      <p class="tagline">Burn tokens. Win tokens. Achieve nothing.</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="label">Context Window</span>
+        <span class="value" id="balance">1000</span>
+        <span class="unit">tokens</span>
+      </div>
+      <div class="stat">
+        <span class="label">Bet</span>
+        <div class="bet-controls">
+          <button id="betDown" aria-label="Decrease bet">−</button>
+          <span class="value" id="bet">10</span>
+          <button id="betUp" aria-label="Increase bet">+</button>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="label">Temperature</span>
+        <span class="value" id="temperature">0.7</span>
+      </div>
+    </div>
+
+    <div class="reels" id="reels">
+      <div class="reel"><div class="strip" data-reel="0"></div></div>
+      <div class="reel"><div class="strip" data-reel="1"></div></div>
+      <div class="reel"><div class="strip" data-reel="2"></div></div>
+      <div class="payline"></div>
+    </div>
+
+    <div class="message" id="message">Insert prompt. Press SPIN to hallucinate responsibly.</div>
+
+    <div class="controls">
+      <button id="spin" class="spin-btn">SPIN<small>the weights</small></button>
+      <button id="reset" class="reset-btn">Top Up Credits</button>
+    </div>
+
+    <section class="paytable">
+      <h2>Paytable <small>(trust us, it's aligned)</small></h2>
+      <ul id="paytable"></ul>
+    </section>
+
+    <footer class="fineprint">
+      <p>⚠️ This machine may confidently produce incorrect jackpots. Your mileage may vary. Past performance does not predict future gradients. By spinning you consent to having your vibes used for training.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

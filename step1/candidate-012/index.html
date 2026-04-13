@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hallucination Machine 3000</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="machine">
+  <header class="top">
+    <h1>HALLUCINATION MACHINE 3000</h1>
+    <p class="tagline">Now with 100% more confident wrongness</p>
+  </header>
+
+  <section class="hud">
+    <div class="stat">
+      <span class="label">Tokens</span>
+      <span id="balance" class="value">1000</span>
+    </div>
+    <div class="stat">
+      <span class="label">Context</span>
+      <span id="context" class="value">0%</span>
+    </div>
+    <div class="stat">
+      <span class="label">Bet</span>
+      <span id="bet" class="value">10</span>
+    </div>
+  </section>
+
+  <section class="reels" id="reels">
+    <div class="reel"><div class="strip" data-reel="0"></div></div>
+    <div class="reel"><div class="strip" data-reel="1"></div></div>
+    <div class="reel"><div class="strip" data-reel="2"></div></div>
+    <div class="payline"></div>
+  </section>
+
+  <section class="controls">
+    <button id="betDown" class="btn small">- Bet</button>
+    <button id="spin" class="btn spin">SPIN</button>
+    <button id="betUp" class="btn small">+ Bet</button>
+  </section>
+
+  <section class="message" id="message">Press SPIN to prompt the model.</section>
+
+  <section class="log">
+    <h2>Training Log</h2>
+    <ul id="log"></ul>
+  </section>
+
+  <footer class="foot">
+    <button id="reset" class="btn tiny">Rehydrate Wallet</button>
+    <p class="fine">*Tokens have no real-world value, unlike our valuation.</p>
+  </footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
