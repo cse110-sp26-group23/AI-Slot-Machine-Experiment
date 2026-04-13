@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Token Casino</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="container">
+    <header>
+      <h1 class="title">🤖 AI TOKEN CASINO 🎰</h1>
+      <p class="subtitle">Where your prompts go to die</p>
+    </header>
+
+    <div class="token-display">
+      <div class="token-balance">
+        <span class="token-label">CONTEXT WINDOW</span>
+        <span class="token-count" id="tokenCount">1000</span>
+        <span class="token-unit">tokens</span>
+      </div>
+      <div class="token-meta">
+        <span id="spent">Spent: 0</span> | <span id="won">Won: 0</span>
+      </div>
+    </div>
+
+    <div class="machine">
+      <div class="machine-top">
+        <div class="lever-arm" id="leverArm">
+          <div class="lever-ball"></div>
+        </div>
+      </div>
+
+      <div class="display-screen">
+        <div class="reel-window">
+          <div class="reel-container" id="reel1">
+            <div class="reel-strip" id="strip1"></div>
+          </div>
+          <div class="reel-divider"></div>
+          <div class="reel-container" id="reel2">
+            <div class="reel-strip" id="strip2"></div>
+          </div>
+          <div class="reel-divider"></div>
+          <div class="reel-container" id="reel3">
+            <div class="reel-strip" id="strip3"></div>
+          </div>
+        </div>
+        <div class="payline"></div>
+      </div>
+
+      <div class="machine-bottom">
+        <div class="bet-controls">
+          <button class="btn btn-minus" id="betMinus">−</button>
+          <div class="bet-display">
+            <span class="bet-label">BET</span>
+            <span class="bet-amount" id="betAmount">10</span>
+            <span class="bet-label">tokens</span>
+          </div>
+          <button class="btn btn-plus" id="betPlus">+</button>
+        </div>
+
+        <button class="spin-btn" id="spinBtn">
+          <span>HALLUCINATE</span>
+          <small>( spin )</small>
+        </button>
+
+        <button class="max-bet-btn" id="maxBet">MAX BET (YOLO)</button>
+      </div>
+    </div>
+
+    <div class="message-box" id="messageBox">
+      <p id="messageText">Insert prompt to begin. Tokens not refundable.</p>
+    </div>
+
+    <div class="pay-table">
+      <h3>PAY TABLE <span class="blink">▶</span></h3>
+      <div class="pay-rows" id="payTable"></div>
+    </div>
+
+    <div class="history-log">
+      <h3>AUDIT LOG <small>(for compliance)</small></h3>
+      <ul id="historyLog"></ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
