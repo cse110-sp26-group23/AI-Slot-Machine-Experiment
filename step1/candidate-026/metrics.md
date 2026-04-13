@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 936
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** 4 slots, more adjustable buy-in, Meets Expectations
+- **Code Quality Notes:** Meets Expectations

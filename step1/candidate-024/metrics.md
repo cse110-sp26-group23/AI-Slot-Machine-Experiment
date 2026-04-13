@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 920
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Similar ot candidate 22, no history, Meets Expectations
+- **Code Quality Notes:** No difference, Meets Expectations
