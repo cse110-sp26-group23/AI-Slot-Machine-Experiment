@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 1120
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Allowed higer buy-in, smoother UI, Exceeds Expectations
+- **Code Quality Notes:** Meets Expectations

@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 1005
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Dark theme, no played history, Meets Expectations
+- **Code Quality Notes:** Similar to the last one, no big difference, Meets Expectations

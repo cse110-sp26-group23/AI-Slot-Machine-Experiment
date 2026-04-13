@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 1136
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** additional features, comes with auto play and several metrics, Meets Expectations
+- **Code Quality Notes:** Similar to the last one, no big difference, Meets Expectations
