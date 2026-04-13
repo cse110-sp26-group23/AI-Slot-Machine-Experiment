@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Slot Machine — Spend Your Tokens!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="machine">
+    <h1 class="title">🤖 AI Token Slots 🤖</h1>
+    <p class="subtitle">Where your tokens go to hallucinate</p>
+
+    <div class="token-display">
+      <span class="token-label">Tokens:</span>
+      <span id="token-count">1000</span>
+    </div>
+
+    <div class="bet-controls">
+      <button class="bet-btn" data-delta="-10">−10</button>
+      <span id="bet-amount" class="bet-value">100</span>
+      <button class="bet-btn" data-delta="10">+10</button>
+    </div>
+
+    <div class="reels-wrapper">
+      <div class="reel-window">
+        <div class="reel" id="reel-0"></div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1"></div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2"></div>
+      </div>
+    </div>
+
+    <button id="spin-btn" class="spin-btn">SPEND TOKENS 🎰</button>
+
+    <div id="message" class="message"></div>
+
+    <div id="history" class="history">
+      <h3>Prompt History</h3>
+      <ul id="history-list"></ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
