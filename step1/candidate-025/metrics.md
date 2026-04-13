@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 1033
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Allowed higher buy-in, dark theme, Meets Expectations
+- **Code Quality Notes:** As normal, no big defference, Meets Expectations

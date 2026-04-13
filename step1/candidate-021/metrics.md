@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 982
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Similar to the one showed in the lecture. Meets Expectations
+- **Code Quality Notes:** Combination of CSS, Js and HTML, with clean format, Meets Expectations

@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 1084
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Meets Expectations
+- **Code Quality Notes:** Meets Expectations
