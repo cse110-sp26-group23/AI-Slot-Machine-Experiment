@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Token Slot Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <h1 class="title">AI TOKEN SLOTS</h1>
+    <p class="subtitle">Burn tokens like a real LLM!</p>
+
+    <div class="token-display">
+      <span class="token-icon">&#129689;</span>
+      <span id="token-count">1000</span> tokens
+    </div>
+
+    <div class="bet-controls">
+      <button class="bet-btn" id="bet-down">-</button>
+      <span class="bet-amount">Bet: <span id="bet-value">10</span> tokens</span>
+      <button class="bet-btn" id="bet-up">+</button>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="spin-btn" id="spin-btn">SPIN &mdash; WASTE TOKENS</button>
+
+    <div class="message" id="message">Insert tokens and pull the lever!</div>
+
+    <div class="paytable">
+      <h3>Paytable</h3>
+      <div class="paytable-row"><span>&#129302;&#129302;&#129302;</span> <span>Robot Uprising &mdash; 50x</span></div>
+      <div class="paytable-row"><span>&#128293;&#128293;&#128293;</span> <span>GPU Meltdown &mdash; 25x</span></div>
+      <div class="paytable-row"><span>&#128640;&#128640;&#128640;</span> <span>AGI Achieved &mdash; 15x</span></div>
+      <div class="paytable-row"><span>&#129504;&#129504;&#129504;</span> <span>Big Brain &mdash; 10x</span></div>
+      <div class="paytable-row"><span>&#128176;&#128176;&#128176;</span> <span>VC Funding &mdash; 5x</span></div>
+      <div class="paytable-row"><span>&#128169;&#128169;&#128169;</span> <span>Hallucination &mdash; 3x</span></div>
+      <div class="paytable-row"><span>Any pair</span> <span>Partial Match &mdash; 1x</span></div>
+    </div>
+
+    <div class="stats">
+      <span>Spins: <span id="spin-count">0</span></span>
+      <span>Tokens won: <span id="tokens-won">0</span></span>
+      <span>Tokens burned: <span id="tokens-burned">0</span></span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

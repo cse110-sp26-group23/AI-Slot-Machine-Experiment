@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Token Slot Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <h1 class="title">AI TOKEN SLOTS</h1>
+    <p class="subtitle">Spend tokens. Win tokens. Lose your mind.</p>
+
+    <div class="token-display">
+      <span class="token-icon">&#129689;</span>
+      <span id="token-count">100</span> tokens
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="symbol">&#129302;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bet-controls">
+      <button id="bet-down" class="bet-btn" aria-label="Decrease bet">-</button>
+      <span class="bet-display">Bet: <span id="bet-amount">10</span> tokens</span>
+      <button id="bet-up" class="bet-btn" aria-label="Increase bet">+</button>
+    </div>
+
+    <button id="spin-btn" class="spin-btn">PROMPT THE MACHINE</button>
+
+    <div id="message" class="message"></div>
+
+    <div class="paytable">
+      <h2>Payouts</h2>
+      <div class="paytable-row"><span>&#129302;&#129302;&#129302;</span> <span>AI Overlord &mdash; 10x</span></div>
+      <div class="paytable-row"><span>&#128176;&#128176;&#128176;</span> <span>VC Funding &mdash; 8x</span></div>
+      <div class="paytable-row"><span>&#9889;&#9889;&#9889;</span> <span>GPU Meltdown &mdash; 6x</span></div>
+      <div class="paytable-row"><span>&#128200;&#128200;&#128200;</span> <span>Stonks &mdash; 5x</span></div>
+      <div class="paytable-row"><span>&#128640;&#128640;&#128640;</span> <span>To The Moon &mdash; 4x</span></div>
+      <div class="paytable-row"><span>&#129412;&#129412;&#129412;</span> <span>Unicorn Startup &mdash; 3x</span></div>
+      <div class="paytable-row"><span>Any match</span> <span>2x</span></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

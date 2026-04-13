@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Token Slot Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <h1 class="title">AI TOKEN SLOTS</h1>
+    <p class="subtitle">Feed the model. Pray for output.</p>
+
+    <div class="token-display">
+      <span class="token-icon">&#129689;</span>
+      <span id="token-count">100</span> tokens
+    </div>
+
+    <div class="bet-controls">
+      <button id="bet-down" class="bet-btn" aria-label="Decrease bet">&#8722;</button>
+      <span id="bet-display">10</span> tokens per spin
+      <button id="bet-up" class="bet-btn" aria-label="Increase bet">&#43;</button>
+    </div>
+
+    <div class="reels-window">
+      <div class="reel-container">
+        <div class="reel" id="reel-0"></div>
+      </div>
+      <div class="reel-container">
+        <div class="reel" id="reel-1"></div>
+      </div>
+      <div class="reel-container">
+        <div class="reel" id="reel-2"></div>
+      </div>
+    </div>
+
+    <button id="spin-btn" class="spin-btn">SPEND TOKENS</button>
+
+    <div id="message" class="message"></div>
+
+    <div class="paytable">
+      <h2>Paytable</h2>
+      <div class="paytable-row"><span>&#129302;&#129302;&#129302;</span> <span>Jackpot &mdash; 50x bet</span></div>
+      <div class="paytable-row"><span>&#128176;&#128176;&#128176;</span> <span>VC Funding &mdash; 20x</span></div>
+      <div class="paytable-row"><span>&#128293;&#128293;&#128293;</span> <span>GPU Meltdown &mdash; 10x</span></div>
+      <div class="paytable-row"><span>&#129504;&#129504;&#129504;</span> <span>Big Brain &mdash; 5x</span></div>
+      <div class="paytable-row"><span>Any 2 match</span> <span>2x bet</span></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

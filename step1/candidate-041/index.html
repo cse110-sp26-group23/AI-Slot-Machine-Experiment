@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Token Slot Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <h1 class="title">AI TOKEN SLOTS</h1>
+    <p class="subtitle">Feed the machine. Win imaginary tokens. Lose real time.</p>
+
+    <div class="token-display">
+      <span class="token-icon">&#x1F4B0;</span>
+      <span id="tokens">100</span> tokens
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel0">
+          <div class="symbol">&#x1F916;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel1">
+          <div class="symbol">&#x1F9E0;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel2">
+          <div class="symbol">&#x1F4A1;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bet-controls">
+      <button id="bet-down" class="bet-btn" aria-label="Decrease bet">-</button>
+      <span class="bet-label">Bet: <span id="bet-amount">10</span></span>
+      <button id="bet-up" class="bet-btn" aria-label="Increase bet">+</button>
+    </div>
+
+    <button id="spin-btn" class="spin-btn">SPIN</button>
+
+    <div id="message" class="message"></div>
+
+    <div class="paytable">
+      <h2>Paytable</h2>
+      <div class="paytable-grid">
+        <div>&#x1F916;&#x1F916;&#x1F916; <span>Sentient AI &mdash; 10x</span></div>
+        <div>&#x1F9E0;&#x1F9E0;&#x1F9E0; <span>Neural Net &mdash; 8x</span></div>
+        <div>&#x1F4A1;&#x1F4A1;&#x1F4A1; <span>Bright Idea &mdash; 6x</span></div>
+        <div>&#x1F4BB;&#x1F4BB;&#x1F4BB; <span>Code Monkey &mdash; 5x</span></div>
+        <div>&#x26A0;&#xFE0F;&#x26A0;&#xFE0F;&#x26A0;&#xFE0F; <span>Hallucination &mdash; 4x</span></div>
+        <div>&#x1F525;&#x1F525;&#x1F525; <span>GPU Fire &mdash; 3x</span></div>
+        <div>Any pair <span>&mdash; 1.5x</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

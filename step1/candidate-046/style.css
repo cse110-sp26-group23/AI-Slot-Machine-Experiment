@@ -1,0 +1,218 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #e0e0e0;
+  overflow: hidden;
+}
+
+.machine {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border: 3px solid #e94560;
+  border-radius: 24px;
+  padding: 32px 40px;
+  text-align: center;
+  box-shadow:
+    0 0 40px rgba(233, 69, 96, 0.3),
+    inset 0 0 60px rgba(0, 0, 0, 0.4);
+  max-width: 480px;
+  width: 90vw;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, #e94560, #f5a623, #e94560);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.token-display {
+  margin: 18px 0 10px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f5a623;
+}
+
+.token-icon {
+  font-size: 1.5rem;
+}
+
+.bet-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: #aaa;
+}
+
+.bet-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #e94560;
+  background: transparent;
+  color: #e94560;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  line-height: 1;
+}
+
+.bet-btn:hover {
+  background: #e94560;
+  color: #fff;
+}
+
+/* Reels */
+.reels-window {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.reel-container {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #0d0d1a;
+  border: 2px solid #333;
+  position: relative;
+}
+
+.reel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.1s linear;
+}
+
+.reel span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+/* Spin button */
+.spin-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e94560, #c62a71);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4);
+}
+
+.spin-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(233, 69, 96, 0.6);
+}
+
+.spin-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.spin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Message */
+.message {
+  min-height: 48px;
+  margin-top: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #f5a623;
+  white-space: pre-line;
+}
+
+.message.win {
+  color: #4ceb7a;
+  animation: pop 0.35s ease;
+}
+
+.message.lose {
+  color: #e94560;
+}
+
+@keyframes pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* Paytable */
+.paytable {
+  margin-top: 24px;
+  border-top: 1px solid #333;
+  padding-top: 16px;
+}
+
+.paytable h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.paytable-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding: 4px 0;
+  color: #999;
+}
+
+/* Broke state */
+.machine.broke {
+  border-color: #555;
+  box-shadow: 0 0 20px rgba(80, 80, 80, 0.3), inset 0 0 60px rgba(0, 0, 0, 0.6);
+}
+
+.machine.broke .title {
+  background: linear-gradient(90deg, #555, #777, #555);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

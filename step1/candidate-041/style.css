@@ -1,0 +1,243 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #e0e0e0;
+  overflow-x: hidden;
+}
+
+.machine {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border: 3px solid #e94560;
+  border-radius: 24px;
+  padding: 32px 40px 40px;
+  text-align: center;
+  box-shadow:
+    0 0 40px rgba(233, 69, 96, 0.3),
+    inset 0 0 60px rgba(0, 0, 0, 0.4);
+  max-width: 480px;
+  width: 90vw;
+}
+
+.title {
+  font-size: 2rem;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, #e94560, #f5a623, #e94560);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.token-display {
+  margin: 20px 0 24px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #f5a623;
+}
+
+.token-icon {
+  font-size: 1.6rem;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.reels-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.reel-window {
+  width: 110px;
+  height: 110px;
+  background: #0a0a1a;
+  border: 2px solid #333;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.reel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.1s ease;
+}
+
+.symbol {
+  font-size: 3.2rem;
+  line-height: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bet-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.bet-btn {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #e94560;
+  border-radius: 50%;
+  background: transparent;
+  color: #e94560;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.bet-btn:hover {
+  background: rgba(233, 69, 96, 0.2);
+}
+
+.bet-label {
+  font-size: 1.1rem;
+  min-width: 80px;
+}
+
+.spin-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e94560, #c62a71);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4);
+}
+
+.spin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(233, 69, 96, 0.6);
+}
+
+.spin-btn:active {
+  transform: translateY(1px);
+}
+
+.spin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.message {
+  min-height: 48px;
+  margin-top: 16px;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #ccc;
+  transition: opacity 0.3s;
+}
+
+.message.win {
+  color: #4cff4c;
+  text-shadow: 0 0 8px rgba(76, 255, 76, 0.5);
+}
+
+.message.lose {
+  color: #ff6b6b;
+}
+
+.message.jackpot {
+  color: #f5a623;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 0 0 12px rgba(245, 166, 35, 0.6);
+  animation: pulse 0.4s ease 3;
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.08); }
+}
+
+.paytable {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+}
+
+.paytable h2 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.paytable-grid {
+  display: grid;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.paytable-grid div {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 8px;
+}
+
+/* Spinning animation class */
+.reel.spinning .symbol {
+  animation: slot-blur 0.08s linear infinite;
+}
+
+@keyframes slot-blur {
+  0% { transform: translateY(-100%); opacity: 0.3; }
+  50% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0.3; }
+}
+
+/* Screen shake on big wins */
+.machine.shake {
+  animation: screen-shake 0.5s ease;
+}
+
+@keyframes screen-shake {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-4px, 2px); }
+  40% { transform: translate(4px, -2px); }
+  60% { transform: translate(-2px, 4px); }
+  80% { transform: translate(2px, -4px); }
+}

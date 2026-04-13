@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Token Slot Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="machine">
+    <h1 class="title">AI TOKEN SLOTS</h1>
+    <p class="subtitle">Spend tokens. Win tokens. Lose tokens. Just like real AI!</p>
+
+    <div class="token-display">
+      <span class="token-icon">&#x1F4B0;</span>
+      <span id="token-count">100</span> tokens
+    </div>
+
+    <div class="reels-container">
+      <div class="reel-window">
+        <div class="reel" id="reel-0">
+          <div class="symbol">&#x1F916;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-1">
+          <div class="symbol">&#x1F4A1;</div>
+        </div>
+      </div>
+      <div class="reel-window">
+        <div class="reel" id="reel-2">
+          <div class="symbol">&#x1F525;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bet-controls">
+      <button id="bet-down" aria-label="Decrease bet">-</button>
+      <span>Bet: <span id="bet-amount">5</span> tokens</span>
+      <button id="bet-up" aria-label="Increase bet">+</button>
+    </div>
+
+    <button id="spin-btn" class="spin-btn">SPIN</button>
+
+    <div id="message" class="message"></div>
+
+    <div class="paytable">
+      <h2>Paytable</h2>
+      <ul>
+        <li>&#x1F916;&#x1F916;&#x1F916; &mdash; JACKPOT! 20x &mdash; <em>"AGI achieved (not really)"</em></li>
+        <li>&#x1F525;&#x1F525;&#x1F525; &mdash; 10x &mdash; <em>"Your GPU is on fire"</em></li>
+        <li>&#x1F4A1;&#x1F4A1;&#x1F4A1; &mdash; 8x &mdash; <em>"Hallucination trifecta"</em></li>
+        <li>&#x1F4B0;&#x1F4B0;&#x1F4B0; &mdash; 6x &mdash; <em>"VC funding secured"</em></li>
+        <li>&#x1F92F;&#x1F92F;&#x1F92F; &mdash; 5x &mdash; <em>"Mind blown, context lost"</em></li>
+        <li>&#x1F9E0;&#x1F9E0;&#x1F9E0; &mdash; 4x &mdash; <em>"Big brain energy"</em></li>
+        <li>Any pair &mdash; 2x</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
