@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Token Slots — Feed the Model</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cabinet">
+    <header>
+      <h1 class="logo">TOKEN<span class="logo-alt">BURNER</span></h1>
+      <p class="tagline">"Your tokens fund our next training run"</p>
+    </header>
+
+    <section class="wallet">
+      <div class="wallet-item">
+        <span class="wallet-label">Tokens</span>
+        <span class="wallet-value" id="balance">1,000</span>
+      </div>
+      <div class="wallet-item">
+        <span class="wallet-label">Bet</span>
+        <div class="bet-controls">
+          <button class="bet-btn" id="betDown" aria-label="Decrease bet">−</button>
+          <span class="wallet-value" id="betDisplay">10</span>
+          <button class="bet-btn" id="betUp" aria-label="Increase bet">+</button>
+        </div>
+      </div>
+      <div class="wallet-item">
+        <span class="wallet-label">Net</span>
+        <span class="wallet-value" id="net">0</span>
+      </div>
+    </section>
+
+    <section class="reels-frame">
+      <div class="payline"></div>
+      <div class="reel" id="reel0">
+        <div class="reel-strip" id="strip0"></div>
+      </div>
+      <div class="reel" id="reel1">
+        <div class="reel-strip" id="strip1"></div>
+      </div>
+      <div class="reel" id="reel2">
+        <div class="reel-strip" id="strip2"></div>
+      </div>
+    </section>
+
+    <div class="message-bar" id="message">Insert tokens. Pull lever. Regret choices.</div>
+
+    <div class="actions">
+      <button class="btn-spin" id="spinBtn">SPIN</button>
+      <button class="btn-bail" id="bailoutBtn">🏦 Bailout</button>
+    </div>
+
+    <section class="stats-row">
+      <div class="stat"><span id="statSpins">0</span><small>Spins</small></div>
+      <div class="stat"><span id="statWins">0</span><small>Wins</small></div>
+      <div class="stat"><span id="statWinRate">0%</span><small>Win Rate</small></div>
+      <div class="stat"><span id="statBurned">0</span><small>Burned</small></div>
+    </section>
+
+    <details class="paytable">
+      <summary>Paytable — How the Model Rewards You</summary>
+      <div class="paytable-grid" id="paytableGrid"></div>
+      <p class="paytable-note">The house edge is a feature, not a bug.</p>
+    </details>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
