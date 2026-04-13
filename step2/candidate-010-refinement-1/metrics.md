@@ -1,14 +1,14 @@
 # Candidate Metrics
 
 - **Run ID:** 010
-- **Timestamp (ISO 8601):** 2026-04-12T06:35:30.562Z
+- **Timestamp (ISO 8601):** 2026-04-13T21:58:26.251Z
 - **Model + Version:** claude-opus-4-6
 - **Input Tokens:** 384
 - **Output Tokens:** 10898  
 - **Total Tokens:** 11282
-- **Elapsed Time (s):** 7:50
+- **Elapsed Time (s):** 2:33
 - **Files Produced:** 3
-- **Lines of Code:** 898
+- **Lines of Code:** 892
 - **Runs in Browser:** yes
-- **App Quality Notes:**
+- **App Quality Notes:** 
 - **Code Quality Notes:**

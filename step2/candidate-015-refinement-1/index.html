@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Hallucinator — AI Slots</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">◆</span>
+        <span class="brand-name">HALLUCINATOR</span>
+      </div>
+      <div class="wallet">
+        <span class="wallet-label">Balance</span>
+        <span class="wallet-value" id="balance">1000.00</span>
+        <span class="wallet-unit">TKN</span>
+        <button id="reset" class="reset-btn" title="Reset balance">↻</button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <div class="machine">
+        <div class="win-banner" id="winBanner"></div>
+        <div class="reels" id="reels">
+          <div class="reel"><div class="strip"></div></div>
+          <div class="reel"><div class="strip"></div></div>
+          <div class="reel"><div class="strip"></div></div>
+          <div class="payline"></div>
+        </div>
+        <div class="last-win" id="lastWin">
+          <span class="last-win-label">Last win</span>
+          <span class="last-win-value" id="lastWinValue">0.00</span>
+        </div>
+      </div>
+    </main>
+
+    <footer class="controls">
+      <div class="bet-group">
+        <span class="ctrl-label">Bet</span>
+        <div class="bet-stepper">
+          <button id="bet-down" class="step-btn" aria-label="Decrease bet">−</button>
+          <span class="bet-value" id="bet">10.00</span>
+          <button id="bet-up" class="step-btn" aria-label="Increase bet">+</button>
+        </div>
+      </div>
+
+      <button id="spin" class="spin-btn">
+        <span class="spin-label">SPIN</span>
+      </button>
+
+      <div class="bet-group right">
+        <span class="ctrl-label">Mute</span>
+        <button id="mute" class="icon-btn" aria-label="Toggle sound">🔊</button>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <canvas id="fx" class="fx"></canvas>
+
+  <script src="app.js"></script>
+</body>
+</html>
