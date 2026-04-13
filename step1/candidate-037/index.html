@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token Burner 3000 — AI Slot Machine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cabinet">
+    <header>
+      <h1>TOKEN BURNER <span class="glow">3000</span></h1>
+      <p class="subtitle">Where Your Tokens Go to Die</p>
+    </header>
+
+    <div class="display-bar">
+      <div class="stat-box">
+        <span class="stat-label">WALLET</span>
+        <span class="stat-value" id="balance">1000</span>
+        <span class="stat-unit">tokens</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">BET</span>
+        <div class="bet-controls">
+          <button id="bet-down" class="bet-btn">−</button>
+          <span class="stat-value" id="bet">50</span>
+          <button id="bet-up" class="bet-btn">+</button>
+        </div>
+        <span class="stat-unit">tokens/spin</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">SPINS</span>
+        <span class="stat-value" id="spins">0</span>
+        <span class="stat-unit">wasted</span>
+      </div>
+    </div>
+
+    <div class="slot-window">
+      <div class="reel-container">
+        <div class="reel" id="reel-0"></div>
+        <div class="reel" id="reel-1"></div>
+        <div class="reel" id="reel-2"></div>
+      </div>
+      <div class="payline-indicator"></div>
+    </div>
+
+    <div id="result-msg" class="result-msg">Feed me your tokens, human.</div>
+
+    <div class="actions">
+      <button id="spin-btn" class="spin-btn">🎰 BURN TOKENS</button>
+      <button id="bailout-btn" class="bailout-btn" hidden>💸 Beg VCs for Bailout</button>
+    </div>
+
+    <details class="paytable">
+      <summary>📜 Paytable (a.k.a. "The Fine Print AI Never Reads")</summary>
+      <div class="paytable-grid" id="paytable"></div>
+      <p class="disclaimer">
+        DISCLAIMER: This machine learns from your losses. Payouts are hallucinated.
+        Past performance does not predict future performance, but neither does AI.
+        Tokens have no value, much like most AI-generated cover letters.
+        By playing you consent to being replaced by a cheaper model next quarter.
+      </p>
+    </details>
+
+    <div class="ticker" id="ticker">
+      <span class="ticker-text" id="ticker-text"></span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
