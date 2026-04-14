@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 854
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Below Expectations. App interface is a bit messy and has weird colors, with directions for controls that don't make sense.
+- **Code Quality Notes:** Poor. Everything is throw into one giant html file and it is a mess.

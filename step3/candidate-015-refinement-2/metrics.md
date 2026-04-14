@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 936
 - **Runs in Browser:** yes
-- **App Quality Notes:** 
-- **Code Quality Notes:**
+- **App Quality Notes:** Meets Expectations. Has all the needed effects and is a clean interface, but it is a bit confusing and the wheels don't show a 3rd lane at the end.
+- **Code Quality Notes:** Meets Expectations. Pretty well organized, index.html is kept to a reasonable length.

@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 1243
 - **Runs in Browser:** yes
-- **App Quality Notes:** 
-- **Code Quality Notes:**
+- **App Quality Notes:** Exceeds Expectations. The visual effects and sound effects really pop and gets more intense with higher rolls and wins.
+- **Code Quality Notes:** Meets Expectations. Reasonably well organized, although it has gotten messier with the refinement steps.

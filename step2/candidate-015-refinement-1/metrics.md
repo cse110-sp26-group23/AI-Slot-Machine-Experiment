@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 904
 - **Runs in Browser:** yes
-- **App Quality Notes:** 
-- **Code Quality Notes:**
+- **App Quality Notes:** Meets Expectations. Has a pretty clean interface, the colors are nice, but the wheels seem a bit broken.
+- **Code Quality Notes:** Meets Expectations. Pretty well organized, index.html is kept to a reasonable length.

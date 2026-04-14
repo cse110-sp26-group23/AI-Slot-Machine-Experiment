@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 1208
 - **Runs in Browser:** yes
-- **App Quality Notes:** 
-- **Code Quality Notes:**
+- **App Quality Notes:** Exceeds Expectations. The effects really pop and a micro-transactions store with jokes was included.
+- **Code Quality Notes:** Meets Expectations. The code is well organized, although a lot of things are hard-coded.

@@ -11,4 +11,4 @@
 - **Lines of Code:** 818
 - **Runs in Browser:** no
 - **App Quality Notes:** Poor, can't close the Paytable screen, meaning the app is unusuable.
-- **Code Quality Notes:** Meets Expectations.
+- **Code Quality Notes:** Meets Expectations, the code itself is fine and well organized.

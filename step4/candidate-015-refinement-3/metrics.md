@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 1482
 - **Runs in Browser:** yes
-- **App Quality Notes:** 
-- **Code Quality Notes:**
+- **App Quality Notes:** Below Expectations. The interface is too messy, and the app is not centering in the screen correctly.
+- **Code Quality Notes:** Meets Expectations. Code is mostly well organized, although the style.css is in a weird ordering.

@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 616
 - **Runs in Browser:** yes
-- **App Quality Notes:** 
-- **Code Quality Notes:**
+- **App Quality Notes:** Exceeds Expectations. There are good visual effects and the interface it clean and understandable.
+- **Code Quality Notes:** Meets Expecations. Organized into 3 files and readable.

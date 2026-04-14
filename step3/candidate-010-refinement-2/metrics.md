@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 900
 - **Runs in Browser:** yes
-- **App Quality Notes:** 
-- **Code Quality Notes:**
+- **App Quality Notes:** Exceeds Expectations. The effects are pretty good and the user-interface is clean.
+- **Code Quality Notes:** Meets Expectations. The index.html is kept to a reasonable length, the code itself is orgnanized fairly well.
