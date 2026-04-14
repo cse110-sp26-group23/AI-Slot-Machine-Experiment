@@ -140,23 +140,28 @@
       const strip = stripEls[i];
       const reelEl = reelEls[i];
       buildStrip(strip, finalSymbol);
-      const endY = -((STRIP_LEN - 1) * h - h);
-      strip.style.transition = 'none';
-      strip.style.transform = `translateY(${h * 2}px)`;
-      strip.getBoundingClientRect();
-      strip.style.transition = `transform ${duration}ms cubic-bezier(0.2, 0.7, 0.2, 1)`;
-      strip.style.transform = `translateY(${endY}px)`;
+      const endY = -((STRIP_LEN - 2) * h);
+      const startY = h * 2;
+      const overshoot = endY - h * 0.6;
 
-      const onEnd = () => {
-        strip.removeEventListener('transitionend', onEnd);
+      const anim = strip.animate(
+        [
+          { transform: `translateY(${startY}px)`, easing: 'cubic-bezier(0.33, 0, 0.2, 1)' },
+          { transform: `translateY(${overshoot}px)`, offset: 0.92, easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)' },
+          { transform: `translateY(${endY}px)` },
+        ],
+        { duration, fill: 'forwards' }
+      );
+
+      anim.onfinish = () => {
+        strip.style.transform = `translateY(${endY}px)`;
         reelEl.animate(
-          [{ transform: 'translateY(0)' }, { transform: 'translateY(6px)' }, { transform: 'translateY(0)' }],
-          { duration: 180, easing: 'ease-out' }
+          [{ transform: 'translateY(0)' }, { transform: 'translateY(4px)' }, { transform: 'translateY(0)' }],
+          { duration: 160, easing: 'ease-out' }
         );
         sfx.stop();
         resolve();
       };
-      strip.addEventListener('transitionend', onEnd);
     });
   }
 
@@ -305,6 +310,11 @@
         const symEls = stripEls[i].querySelectorAll('.symbol');
         symEls[symEls.length - 1]?.classList.add('winning');
       });
+
+      machineEl.classList.remove('flash');
+      void machineEl.offsetWidth;
+      machineEl.classList.add('flash');
+      setTimeout(() => machineEl.classList.remove('flash'), 650);
 
       const isJackpot = winIndices.length === 3;
       if (isJackpot) {
