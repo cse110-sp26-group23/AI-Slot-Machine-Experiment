@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Hallucinator — AI Slots</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">◆</span>
+        <span class="brand-name">HALLUCINATOR</span>
+        <span class="brand-tag">AI&nbsp;SLOTS</span>
+      </div>
+      <div class="top-right">
+        <button id="shop" class="shop-btn" title="Buy tokens">
+          <span class="shop-icon">＋</span><span class="shop-label">Tokens</span>
+        </button>
+        <div class="wallet">
+          <span class="wallet-label">Balance</span>
+          <span class="wallet-value" id="balance">1000.00</span>
+          <span class="wallet-unit">TKN</span>
+          <button id="reset" class="reset-btn" title="Reset balance">↻</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="stage">
+      <div class="machine" id="machine">
+        <div class="win-banner" id="winBanner"></div>
+        <div class="reels" id="reels">
+          <div class="reel"><div class="strip"></div></div>
+          <div class="reel"><div class="strip"></div></div>
+          <div class="reel"><div class="strip"></div></div>
+          <svg class="paylines" id="paylines" viewBox="0 0 300 300" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="quip" id="quip">Press SPIN to query the oracle…</div>
+        <div class="status-row">
+          <div class="stat"><span class="stat-label">Bet</span><span class="stat-value" id="betStat">10.00</span></div>
+          <div class="stat"><span class="stat-label">Last Win</span><span class="stat-value accent" id="lastWinValue">0.00</span></div>
+          <div class="stat"><span class="stat-label">Stake</span><span class="stat-value" id="stakeTier">LOW</span></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="controls">
+      <div class="bet-group">
+        <span class="ctrl-label">Bet</span>
+        <div class="bet-stepper">
+          <button id="bet-down" class="step-btn" aria-label="Decrease bet">−</button>
+          <span class="bet-value" id="bet">10.00</span>
+          <button id="bet-up" class="step-btn" aria-label="Increase bet">+</button>
+        </div>
+      </div>
+
+      <button id="spin" class="spin-btn">
+        <span class="spin-label">SPIN</span>
+      </button>
+
+      <div class="bet-group right">
+        <span class="ctrl-label">Sound</span>
+        <button id="mute" class="icon-btn" aria-label="Toggle sound">🔊</button>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <canvas id="fx" class="fx"></canvas>
+
+  <!-- Shop Modal -->
+  <div class="modal" id="shopModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="shopClose" aria-label="Close">×</button>
+      <div class="modal-header">
+        <h2>Top up your <span class="accent">compute budget</span></h2>
+        <p class="modal-sub">Fine-tuned packages, aligned to your wallet*</p>
+      </div>
+      <div class="shop-grid" id="shopGrid"></div>
+      <div class="modal-foot">*No actual money, tokens, GPUs, or LLMs were harmed. Purely satirical.</div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
