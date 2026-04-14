@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 490
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** UI has smooth animations, color theme is a bit messy but fits digital aesthetic, works as intended. Meets Expectations
+- **Code Quality Notes:** Clearly separated CSS/HTML/Script, functions have clear names, attempt at scalable architecture, adding additional slots might not be efficient. Meets Expectations
