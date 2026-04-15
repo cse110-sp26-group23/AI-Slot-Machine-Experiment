@@ -11,4 +11,4 @@
 - **Lines of Code:** 923
 - **Runs in Browser:** yes
 - **App Quality Notes:** has auto spin function! can manually increase tokens by increments of 500k. no incrementing tokens used per spin.
-- **Code Quality Notes:**
+- **Code Quality Notes:** Code is well-organized. Code is clearly seprated and easy to read. Well-structured. Code meets expectation. 
