@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 680
 - **Runs in Browser:** yes
-- **App Quality Notes:** Unremarkable.
-- **Code Quality Notes:** Unremarkable.
+- **App Quality Notes:** Meets Expectations. Works in browser, theme is clear enough, and the UI is easy to understand, but it feels pretty average overall.
+- **Code Quality Notes:** Meets Expectations. Code seems organized enough with separate files, but nothing really stands out.

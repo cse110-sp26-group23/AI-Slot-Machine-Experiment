@@ -9,7 +9,8 @@ Other files:
 - `STEP1-RESULTS.md` to `STEP4-RESULTS.md` = reasoning for each narrowing round
 - `FINAL-REPORT.md` = final summary of what we found
 - `metrics.md` = template used for tracking each run
-- 
+
+
 ## How We Evaluated Candidates
 We used two main categories from our rubric: product and code.
 

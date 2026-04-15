@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 651
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Meets Expectations. Clear slot machine UI, works in browser, and the AI joke theme is there. Feels solid overall, but not as strong or polished as the best candidates.
+- **Code Quality Notes:** Meets Expectations. Separate files and readable structure. Organized enough, but nothing that really stands out.
