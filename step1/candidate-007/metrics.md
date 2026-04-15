@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 912
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Not much animation, but app is functional and UI is simple and accomplishes its purpose, also being informative while not being overwhelming. Font/theming could use work, not much AI theme besides emojis and messages. Meets Expectations
+- **Code Quality Notes:** More modular, good organization by setting references to specific DOM elements which makes code easier to build upon. Logic is not too bloated. Exceeds Expectations
