@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 898
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Simple UI, but very effective and theming is creative (terminal type design for feedback). Motion blur during spins adds positive effect for user experience. Exceeds Expectations
+- **Code Quality Notes:** Code is broken down into components, for the scope it accomplishes its purpose, but building upon the logic further it seems there's no foresight in the potential scalability of the app. Meets Expectations
