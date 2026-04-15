@@ -11,4 +11,4 @@
 - **Lines of Code:** 944
 - **Runs in Browser:** yes
 - **App Quality Notes:** has sound that can be turned off, no history
-- **Code Quality Notes:** HTML, CSS, and JavaScript are all in one file. Code is clean and well-organized. Overall, meets expectation.  
+- **Code Quality Notes:** HTML, CSS, and JavaScript are all in one file. Code is clean and well-organized. Overall, below expectation.  
