@@ -11,4 +11,4 @@
 - **Lines of Code:** 631
 - **Runs in Browser:** yes
 - **App Quality Notes:** right when landing at 1 icon, suddenly switches icon. has sound and mini icons displayed when winning. no history. has estimate of irl currency
-- **Code Quality Notes:**
+- **Code Quality Notes:** Code is slightly messy. HTML, CSS, and JAvaScript are in oen file. Organization could be clearer. Overall, below expectations. 
