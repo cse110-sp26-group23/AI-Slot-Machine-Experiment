@@ -10,5 +10,14 @@
 - **Files Produced:** 3
 - **Lines of Code:** 567
 - **Runs in Browser:** yes
-- **App Quality Notes:** Unremarkable.
-- **Code Quality Notes:** Unremarkable.
+- **App Quality Notes:** Meets Expectations. It works and the AI sarcasm theme is clear enough. The layout is clean and the slot machine parts are all there, but it is not that memorable compared to the stronger candidates.
+- **Code Quality Notes:** Meets Expectations. The code looks organized enough with separate files and understandable structure, but nothing really stands out about it.
+### candidate-018
+- Strengths:
+  - works in browser
+  - clear slot machine layout
+  - AI sarcasm theme is present
+- Weaknesses:
+  - not very memorable
+  - not much polish or standout effects
+- Why not selected: It was decent overall, but compared to the stronger candidates it felt more basic and did not stand out enough in UI or theme.
