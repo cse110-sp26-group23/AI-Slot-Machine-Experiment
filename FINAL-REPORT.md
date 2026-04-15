@@ -5,7 +5,7 @@ This experiment was about seeing what happens when we run the exact same prompt 
 
 ## Final Presentation Video/Slides
 
-[Final Video](https://youtu.be/778o1iNiSWg)
+[Final Video](https://youtu.be/778o1iNiSWg) <br>
 [Final Slides](https://docs.google.com/presentation/d/1A7ec3xKLpayy_gE7fYLOrqfYXf1xtQf2FvjQP0N4jh8/edit?usp=sharing)
 
 ## Setup
