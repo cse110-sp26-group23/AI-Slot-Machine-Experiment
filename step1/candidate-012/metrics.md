@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 513
 - **Runs in Browser:** yes
-- **App Quality Notes:** Unremarkable.
-- **Code Quality Notes:** Unremarkable.
+- **App Quality Notes:** Remarkable. The app appears functional and usable as a slot machine. I don't see anything in the notes that suggests a polished or unique theme.
+- **Code Quality Notes:** Remarkable. The code appears clear and structured with separate files, but the notes do not show strong maintainability.
