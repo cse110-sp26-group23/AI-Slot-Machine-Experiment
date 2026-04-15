@@ -11,4 +11,4 @@
 - **Lines of Code:** 883
 - **Runs in Browser:** yes
 - **App Quality Notes:** has sound when spinning and when winning or losing. no history, no incrementing oayment per round. can manually increment balance
-- **Code Quality Notes:**
+- **Code Quality Notes:** Logic is clear and easy to follow. Code is well-organized. Overall, meets expectations. 
