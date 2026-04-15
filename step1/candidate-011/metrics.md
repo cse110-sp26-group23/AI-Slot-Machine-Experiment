@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 468
 - **Runs in Browser:** yes
-- **App Quality Notes:** Unremarkable.
-- **Code Quality Notes:** Unremarkable.
+- **App Quality Notes:** Clear win/lose loop when running, overall experience appears fairly standard and not especially polished.
+- **Code Quality Notes:** Code is clear and structured, given the multi-file output. The notes suggest good maintainability.
