@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 938
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Animations are very engaging, app feels responsive and font/buttons enhance the user experience. Color scheme/design is more coherent, colors distinguish between loss/wins effectively (tokens burned vs winning tokens). Popups make app feel alive and engaging. Exceeds Expectations
+- **Code Quality Notes:** Separated into files, logic is minimal, but there could be more effective ways to style. However overall good organization. Exceeds Expectations
