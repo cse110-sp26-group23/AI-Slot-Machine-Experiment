@@ -11,4 +11,4 @@
 - **Lines of Code:** 624
 - **Runs in Browser:** yes
 - **App Quality Notes:** no paytable, has estimate of irl currency
-- **Code Quality Notes:**
+- **Code Quality Notes:** Clear implementations. Functional and clear code. Overall, meet expectations. 
