@@ -11,4 +11,4 @@
 - **Lines of Code:** 782
 - **Runs in Browser:** yes
 - **App Quality Notes:** cannot increment payment per round. can manually increase balance. no history.
-- **Code Quality Notes:**
+- **Code Quality Notes:**Code is well-structured with clear functions defined.  Overall, meet expectations. 

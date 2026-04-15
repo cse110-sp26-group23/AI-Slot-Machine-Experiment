@@ -11,4 +11,4 @@
 - **Lines of Code:** 631
 - **Runs in Browser:** yes
 - **App Quality Notes:** no paytable, has sound
-- **Code Quality Notes:** significantly fewer tokens outputted
+- **Code Quality Notes:** Significantly fewer tokens outputted, but meets expectations. 

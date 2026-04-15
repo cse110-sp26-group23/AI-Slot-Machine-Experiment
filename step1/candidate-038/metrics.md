@@ -11,4 +11,4 @@
 - **Lines of Code:** 730
 - **Runs in Browser:** yes
 - **App Quality Notes:** no history
-- **Code Quality Notes:**
+- **Code Quality Notes:** Readable and clena code. Overall, meets expectations. 
