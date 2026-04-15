@@ -10,5 +10,5 @@
 - **Files Produced:** 1
 - **Lines of Code:** 642
 - **Runs in Browser:** yes
-- **App Quality Notes:**
-- **Code Quality Notes:**
+- **App Quality Notes:** Polished and functional, this version removed the slot machine roll down animation style. Exceeds Expectations
+- **Code Quality Notes:** Single file is divided into proper sections but still in a single file. Meets Expectations
