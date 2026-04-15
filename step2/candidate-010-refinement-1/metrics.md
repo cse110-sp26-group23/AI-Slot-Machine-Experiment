@@ -10,5 +10,5 @@
 - **Files Produced:** 3
 - **Lines of Code:** 892
 - **Runs in Browser:** yes
-- **App Quality Notes:** 
-- **Code Quality Notes:**
+- **App Quality Notes:** Below Expectations. App can break at times and not render correctly, but when it is working the interface is pretty good.
+- **Code Quality Notes:** Meets Expectations. The code quality is fine, it is pretty well organized.
