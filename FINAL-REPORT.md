@@ -3,6 +3,11 @@
 ## Overview
 This experiment was about seeing what happens when we run the exact same prompt many times using the same AI coding tool. We wanted to see how much the outputs changed, how good or bad they were, and whether one refinement turn actually helped that much.
 
+## Final Presentation Video/Slides
+
+[Final Video](https://youtu.be/778o1iNiSWg)
+[Final Slides](https://docs.google.com/presentation/d/1A7ec3xKLpayy_gE7fYLOrqfYXf1xtQf2FvjQP0N4jh8/edit?usp=sharing)
+
 ## Setup
 We used Claude Code with the same model every time. Each run was done in a clean session, and we did not hand-edit the generated code. For later rounds, we only did one refinement turn each time.
 
